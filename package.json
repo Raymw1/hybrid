@@ -1,0 +1,37 @@
+{
+  "name": "fcamara",
+  "version": "1.0.0",
+  "description": "- Plugins * Extensões VS CODE [] Prettier [] ESLint * Configuração VS CODE [] CTRL + SHIF + P => Ativar a opção **Editor: Format on save**",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config .",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raymw1/fcamara.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raymw1/fcamara/issues"
+  },
+  "homepage": "https://github.com/Raymw1/fcamara#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
+}
