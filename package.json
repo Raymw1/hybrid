@@ -4,6 +4,7 @@
   "description": "- Plugins * Extensões VS CODE [] Prettier [] ESLint * Configuração VS CODE [] CTRL + SHIF + P => Ativar a opção **Editor: Format on save**",
   "main": "src/server.js",
   "scripts": {
+    "init_db": "node -r dotenv/config src/config/initDatabase.js",
     "dev": "nodemon -r dotenv/config .",
     "start": "node ."
   },
@@ -33,6 +34,8 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "nunjucks": "^3.2.3"
+    "nunjucks": "^3.2.3",
+    "pg": "^8.7.1",
+    "pgtools": "^0.3.2"
   }
 }
