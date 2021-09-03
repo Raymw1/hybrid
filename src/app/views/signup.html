@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignUp</title>
-</head>
-<body>
-    <form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="content">
+
+    </header>
+
+    <main class="content container">
+      <form action="/signup" method="POST">
         <div class="input-group">
-            <label for="fname">Nome</label><br>
-            <input type="text" id="fname" name="fname">
+          <label for="fname">Nome completo:</label>
+          <input type="text" id="name" name="name" />
         </div>
         <div class="input-group">
-            <label for="lname">Sobrenome</label>
-            <input type="text" id="lname" name="lname">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" />
         </div>
         <div class="input-group">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email">
+          <label for="phone">Número de telefone:</label>
+          <input type="number" id="phone" name="phone" />
         </div>
         <div class="input-group">
-            <label for="phone">Número de telefone</label>
-            <input type="text" id="phone" name="phone">
+          <label for="unidade">Unidade preferida:</label>
+          <select name="unidade" id="unidade">
+            <option value="0">São Paulo</option>
+            <option value="1">Santos</option>
+          </select>
         </div>
-        <div class="input-group">
-            <label for="cars">Unidade preferida</label>
-                <select name="unidade" id="unidade">
-                    <option value="0">São Paulo</option>
-                    <option value="1">Santos</option>
-                </select>
-        </div>
-        <button type="button">Cadastrar</button>
+        <button class="button" type="submit">Cadastrar-se</button>
+        <p>Esqueceu sua senha? <a href="#">Recuperar</a></p>
       </form>
-</body>
+    </main>
+  </body>
 </html>

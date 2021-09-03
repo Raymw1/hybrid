@@ -1,0 +1,63 @@
+:root {
+  font-size: 62.5%;
+  --primary-color: #FEBBA2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #111;
+}
+
+/* ============ GENERAL ============ */
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* justify-content: space-between; */
+  width: 100vw;
+  height: 100vh;
+  font-size: 16px;
+  background-color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ============ LINKS AND BUTTONS ============ */
+button {
+  border: none;
+}
+
+.button {
+  cursor: pointer;
+  padding: 1.2rem 0;
+  border-radius: .8rem;
+  background-color: var(--primary-color);
+}
+
+a {
+  font-weight: 500;
+}
+
+
+/* ============ STRUCTURE ============ */
+.content {
+  margin: 0 auto;
+  width: 90%;
+  height: 100%;
+  max-width: 940px;
+}
+
+header.content {
+  height: 6.4rem;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  
+  /* padding: auto 0; */
+}
+
+

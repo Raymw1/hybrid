@@ -4,6 +4,9 @@ const routes = require("./routes/index");
 const nunjucks = require("nunjucks");
 const path = require("path");
 
+server.use(express.static("public"));
+server.use(express.urlencoded({ extended: true }));
+// server.use(methodOverride("_method"));
 server.set("view engine", "html");
 nunjucks.configure(path.join(__dirname, "app/views"), {
   express: server,
