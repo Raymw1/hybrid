@@ -5,11 +5,11 @@ async function initDb() {
   await db.query(`
   CREATE TABLE IF NOT EXISTS cities (
     id SERIAL PRIMARY KEY,
-    city text NOT NULL
+    city VARCHAR(100) NOT NULL
   );`);
 
   await db.query(
-    `CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name text NOT NULL, email text UNIQUE NOT NULL, phone text UNIQUE NOT NULL, region_id integer NOT NULL DEFAULT 0, is_admin boolean NOT NULL DEFAULT false);`
+    `CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name VARCHAR(100) NOT NULL, email VARCHAR(100) UNIQUE NOT NULL, phone VARCHAR(100) UNIQUE NOT NULL, password text UNIQUE NOT NULL, region_id integer NOT NULL DEFAULT 0, is_admin boolean NOT NULL DEFAULT false);`
   );
 
   await db.query(`

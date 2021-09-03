@@ -3,6 +3,7 @@ CREATE TABLE "users" (
   "name" text NOT NULL,
   "email" text UNIQUE NOT NULL,
   "phone" text UNIQUE NOT NULL,
+  "password" text UNIQUE NOT NULL,
   "region_id" integer NOT NULL DEFAULT 0,
   "is_admin" boolean NOT NULL DEFAULT false
 );
