@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/rooms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Selecionar sala</title>
+  </head>
+  <body>
+    <header class="content">
+      <nav>
+        <ul>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Cadastar-se</a></li>
+          <a href="#" class="hamburguer" onclick="Menu.open();"><i class="material-icons">menu</i></a>
+        </ul>
+      </nav>
+    </header>
+    <main class="content container">
+      <h1>São Paulo</h1>
+      <p class="info">Selecione uma mesa</p>
+      <div class="rooms">
+        <div class="room">
+          <div class="desk occuped" data-id="1"></div>
+          <div class="desk {{ 'occuped' if desk.occuped }}" data-id="2"></div>
+          <div class="desk" data-id="3"></div>
+          <div class="desk" data-id="4"></div>
+          <div class="desk occuped" data-id="5"></div>
+          <div class="desk" data-id="6"></div>
+        </div>
+        <div class="room">
+          <div class="desk" data-id="7"></div>
+          <div class="desk" data-id="8"></div>
+          <div class="desk" data-id="9"></div>
+          <div class="desk" data-id="10"></div>
+          <div class="desk" data-id="11"></div>
+          <div class="desk" data-id="12"></div>
+        </div>
+      </div>
+      <form action="/rooms" method="POST">
+        <input type="hidden" name="desk" value="{{ desk }}">
+        <button class="button">Próximo</button>
+      </form>
+    </main>
+    <script src="/scripts/header.js"></script>
+    <script src="/scripts/rooms.js"></script>
+  </body>
+</html>

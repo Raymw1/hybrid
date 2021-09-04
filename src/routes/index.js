@@ -17,4 +17,8 @@ routes.get("/unities", (req, res) => {
   return res.render("unities");
 });
 
+routes.get("/rooms", (req, res) => {
+  return res.render("rooms");
+});
+
 module.exports = routes;
