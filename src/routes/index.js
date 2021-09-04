@@ -1,5 +1,6 @@
 const express = require("express");
 const routes = express.Router();
+const users = require("./users");
 
 routes.get("/", (req, res) => {
   return res.render("index");
@@ -20,5 +21,7 @@ routes.get("/unities", (req, res) => {
 routes.get("/rooms", (req, res) => {
   return res.render("rooms");
 });
+
+routes.use(users);
 
 module.exports = routes;

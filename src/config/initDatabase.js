@@ -101,6 +101,9 @@ async function initDb() {
     ON DELETE CASCADE;`
   );
 
+  await db.query(`INSERT INTO cities (city) VALUES ('São Paulo')`);
+  await db.query(`INSERT INTO cities (city) VALUES ('Santos')`);
+
   console.log("Database and tables created 🚀");
   process.exit();
 }
