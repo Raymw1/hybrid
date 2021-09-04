@@ -13,4 +13,8 @@ routes.get("/login", (req, res) => {
   return res.render("login");
 });
 
+routes.get("/unities", (req, res) => {
+  return res.render("unities");
+});
+
 module.exports = routes;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/unities.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Selecionar unidade</title>
+  </head>
+  <body>
+    <header class="content">
+      <nav>
+        <ul>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Cadastar-se</a></li>
+          <a href="#" class="hamburguer" onclick="Menu.open();"><i class="material-icons">menu</i></a>
+        </ul>
+      </nav>
+    </header>
+    <main class="content container">
+      <h1>Selecione sua unidade</h1>
+      <div class="unities">
+        <div class="unity active" data-id="1">
+          <div class="image">
+            <img src="/assets/images/saopaulo.svg" alt="São Paulo">
+          </div>
+          <p>São Paulo</p>
+        </div>
+        <div class="unity {{ 'active' if city == 2 }}" data-id="2">
+          <div class="image">
+            <img src="/assets/images/santos.svg" alt="Santos">
+          </div>
+          <p>Santos</p>
+        </div>
+      </div>
+      <form action="/unities" method="POST">
+        <input type="hidden" name="city" value="{{ city }}">
+        <button class="button">Selecionar</button>
+      </form>
+    </main>
+    <script src="/scripts/header.js"></script>
+    <script src="/scripts/unities.js"></script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 const db = require("./database");
-// db.connect();
+db.connect();
 
 async function initDb() {
   await db.query(`
@@ -101,8 +101,8 @@ async function initDb() {
     ON DELETE CASCADE;`
   );
 
-  db.end();
   console.log("Database and tables created 🚀");
+  process.exit();
 }
 
 initDb();
