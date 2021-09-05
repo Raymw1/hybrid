@@ -66,13 +66,26 @@
           <form action="/forgot-password" method="post">
             <div class="input-group">
               <label for="email">Insira seu email:</label>
-              <input type="email" name="email" id="email" placeholder="email@email.com" required>
+              <input type="email" name="email" placeholder="email@email.com" required>
             </div>
             <button type="submit" class="button">Recuperar senha</button>
           </form>
         </div>
       </div>
     </div>
+    <div class="message-popup {{ 'active' if success or error }}">
+      <img src="{{ '/assets/images/success.png' if success }}{{ '/assets/images/error.png' if error }}" 
+      alt="{{ 'success' if success }}{{ 'error' if error }}">
+      {{ error or success }}
+    </div>
+    {% if error or success %}
+    <script>
+      document.querySelector(".message-popup").classList.add("active");
+      setTimeout(() => {
+      document.querySelector(".message-popup").setAttribute("class", "message-popup");
+      }, 4000);
+    </script>
+    {% endif %}
     <script src="/scripts/header.js"></script>
     <script src="/scripts/forgot-password.js"></script>
   </body>

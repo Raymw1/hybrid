@@ -7,7 +7,7 @@ module.exports = {
     try {
       const user = await User.findOne({ where: { email } });
       if (!user)
-        return res.render("/signup", {
+        return res.render("signup", {
           error: "Email não cadastrado",
         });
       req.user = user;
