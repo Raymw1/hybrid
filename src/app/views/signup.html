@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/form.css">
     <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -52,10 +53,27 @@
         <button class="button" type="submit">Cadastrar-se</button>
         <div class="other-links">
           <p>Já possui conta? <a href="/login">Fazer login</a></p>
-          <p>Esqueceu sua senha? <a href="/forgot-password">Recuperar</a></p>
+          <p>Esqueceu sua senha? <a href="#" onclick="ModalPassword.open()">Recuperar</a></p>
         </div>
       </form>
     </main>
+    <div class="modal-overlay">
+      <div class="modal">
+        <a class="close" href="#" onclick="ModalPassword.close();"><i class="material-icons">close</i></a>
+        <div class="modal-content">
+          <h3>Esqueceu a senha?</h3>
+          <p>Iremos enviar um email, para você criar outra</p>
+          <form action="/forgot-password" method="post">
+            <div class="input-group">
+              <label for="email">Insira seu email:</label>
+              <input type="email" name="email" id="email" placeholder="email@email.com" required>
+            </div>
+            <button type="submit" class="button">Recuperar senha</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <script src="/scripts/header.js"></script>
+    <script src="/scripts/forgot-password.js"></script>
   </body>
 </html>

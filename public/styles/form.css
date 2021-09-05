@@ -9,8 +9,9 @@ form {
   width: 100%;
 }
 
-input, select {
-  margin-top: .4rem;
+input,
+select {
+  margin-top: 0.4rem;
   display: block;
   width: 100%;
   background-color: #fff;
@@ -18,7 +19,18 @@ input, select {
   font-size: 16px;
   color: #333;
   outline: none;
-  border-radius: .8rem;
-  border: 1px solid #C8C8C8;
+  border-radius: 0.8rem;
+  border: 1px solid #c8c8c8;
+  transition: border 100ms;
 }
 
+input:focus {
+  border: 2px solid var(--primary-color);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
