@@ -38,7 +38,7 @@ const Validate = {
     };
   },
   allFields(event) {
-    const fields = document.querySelectorAll(
+    const fields = event.currentTarget.querySelectorAll(
       ".input-group input, .input-group select, .input-group textarea"
     );
     for (const field of fields) {

@@ -18,11 +18,14 @@ module.exports = {
         data,
         error: "Insira um email válido",
       });
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({
+      where: { email },
+      or: { phone: phone.replace(/\D/g, "") },
+    });
     if (user)
       return res.render("signup", {
         data,
-        error: "Email já cadastrado!",
+        error: "Usuário já cadastrado!",
       });
     // if (password !== passwordRepeat)
     //   return res.render("signup", {

@@ -24,6 +24,7 @@ module.exports = {
       let { name, email, password, phone, city, is_admin } = req.body;
       password = await hash(password, 8);
       is_admin = !!is_admin;
+      phone = phone.replace(/\D/g, ""); // Get only digits/numbers
       const userId = await User.create({
         name,
         email,
