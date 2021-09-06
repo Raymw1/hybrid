@@ -29,15 +29,15 @@
       <form action="/signup" method="POST">
         <div class="input-group">
           <label for="name">Nome completo</label>
-          <input type="text" id="name" name="name" />
+          <input type="text" id="name" name="name" value="{{ data.name }}" />
         </div>
         <div class="input-group">
           <label for="email">Email</label>
-          <input type="email" id="email" onblur="Validate.apply(this, 'isEmail')" name="email" />
+          <input type="email" id="email" onblur="Validate.apply(this, 'isEmail')" name="email" value="{{ data.email }}" />
         </div>
         <div class="input-group">
           <label for="phone">Número de telefone</label>
-          <input type="text" id="phone" onkeydown="Mask.apply(this, 'formatPhone');" name="phone" />
+          <input type="text" id="phone" onkeydown="Mask.apply(this, 'formatPhone');" name="phone" value="{{ data.phone }}" />
         </div>
         <div class="input-group">
           <label for="password">Senha</label>
@@ -46,8 +46,8 @@
         <div class="input-group">
           <label for="city">Unidade preferida</label>
           <select name="city" id="city">
-            <option value="1">São Paulo</option>
-            <option value="2">Santos</option>
+            <option value="1" {{ 'selected' if data.city == "1" }}>São Paulo</option>
+            <option value="2" {{ 'selected' if data.city == "2" }}>Santos</option>
           </select>
         </div>
         <button class="button" onclick="Validate.allFields(event)" type="submit">Cadastrar-se</button>
