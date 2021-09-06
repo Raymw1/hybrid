@@ -33,7 +33,9 @@
         </div>
         <div class="input-group">
           <label for="email">Email</label>
-          <input type="email" id="email" onblur="Validate.apply(this, 'isEmail')" name="email" value="{{ data.email }}" />
+          <div class="input">
+            <input type="email" id="email" onblur="Validate.isEmail(this)" name="email" value="{{ data.email }}" />
+          </div>
         </div>
         <div class="input-group">
           <label for="phone">Número de telefone</label>
@@ -66,7 +68,9 @@
           <form action="/forgot-password" method="post">
             <div class="input-group">
               <label for="email">Insira seu email:</label>
-              <input type="email" name="email" onblur="Validate.apply(this, 'isEmail')" placeholder="email@email.com" required>
+              <div class="input">
+                <input type="email" name="email" onblur="Validate.isEmail(this)" placeholder="email@email.com" required>
+              </div>
             </div>
             <button type="submit" onclick="Validate.allFields(event)" class="button">Recuperar senha</button>
           </form>
