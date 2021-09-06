@@ -26,7 +26,7 @@ module.exports = {
         <p><a href="http://127.0.0.1:3000/password-reset?token=${token}" target="_blank">RECUPERAR SENHA</a></p>`,
       });
       return res.render("signup", {
-        success: "Verifique seu email para resetar sua senha!",
+        modalsuccess: "Enviamos um link para seu email!",
       });
     } catch (err) {
       console.error(err);

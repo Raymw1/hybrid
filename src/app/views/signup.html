@@ -73,12 +73,12 @@
         </div>
       </div>
     </div>
-    <div class="message-popup {{ 'active' if success or error }}">
-      <img src="{{ '/assets/images/success.png' if success }}{{ '/assets/images/error.png' if error }}" 
-      alt="{{ 'success' if success }}{{ 'error' if error }}">
-      {{ error or success }}
+    <div class="message-popup {{ 'active' if success or error or modalsuccess }}">
+      <img src="{{ '/assets/images/success.png' if success or modalsuccess }}{{ '/assets/images/error.png' if error }}" 
+      alt="{{ 'success' if success or modalsuccess }}{{ 'error' if error }}">
+      {{ error or success or modalsuccess }}
     </div>
-    {% if error or success %}
+    {% if error or success or modalsuccess %}
     <script>
       document.querySelector(".message-popup").classList.add("active");
       setTimeout(() => {
