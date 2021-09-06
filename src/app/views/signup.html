@@ -33,11 +33,11 @@
         </div>
         <div class="input-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" onblur="Validate.apply(this, 'isEmail')" name="email" />
         </div>
         <div class="input-group">
           <label for="phone">Número de telefone</label>
-          <input type="text" id="phone" name="phone" />
+          <input type="text" id="phone" onkeydown="Mask.apply(this, 'formatPhone');" name="phone" />
         </div>
         <div class="input-group">
           <label for="password">Senha</label>
@@ -50,7 +50,7 @@
             <option value="2">Santos</option>
           </select>
         </div>
-        <button class="button" type="submit">Cadastrar-se</button>
+        <button class="button" onclick="Validate.allFields(event)" type="submit">Cadastrar-se</button>
         <div class="other-links">
           <p>Já possui conta? <a href="/login">Fazer login</a></p>
           <p>Esqueceu sua senha? <a href="#" onclick="ModalPassword.open()">Recuperar</a></p>
@@ -66,9 +66,9 @@
           <form action="/forgot-password" method="post">
             <div class="input-group">
               <label for="email">Insira seu email:</label>
-              <input type="email" name="email" placeholder="email@email.com" required>
+              <input type="email" name="email" onblur="Validate.apply(this, 'isEmail')" placeholder="email@email.com" required>
             </div>
-            <button type="submit" class="button">Recuperar senha</button>
+            <button type="submit" onclick="Validate.allFields(event)" class="button">Recuperar senha</button>
           </form>
         </div>
       </div>
@@ -88,5 +88,7 @@
     {% endif %}
     <script src="/scripts/header.js"></script>
     <script src="/scripts/forgot-password.js"></script>
+    <script src="/scripts/validateForm.js"></script>
+    <script src="/scripts/mask.js"></script>
   </body>
 </html>
