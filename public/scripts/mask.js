@@ -6,18 +6,17 @@ const Mask = {
   },
   formatPhone(value) {
     value = value.replace(/\D/g, ""); // Get only digits/numbers
-    value = value.replace(/(\d{1})(\d)/, "+$1$2"); // '+9999999999999'
-    value = value.replace(/(\d{2})(\d{2})(\d)/, "$1($2)$3"); // '+99(99)999999999'
-    value = value.replace(/(\d{5})(\d)/, "$1-$2"); // '+99(99)99999-9999'
+    if (value.length > 14) {
+      value = value.slice(0, -1);
+    }
+    if (value.length > 13) {
+      value = value.replace(/(\d{3})(\d{2})(\d{5})(\d)/, "+$1($2)$3-$4"); // '+9999999999999'
+    } else {
+      value = value.replace(/(\d{1})(\d)/, "+$1$2"); // '+9999999999999'
+      value = value.replace(/(\d{2})(\d{2})(\d)/, "$1($2)$3"); // '+99(99)999999999'
+      value = value.replace(/(\d{5})(\d)/, "$1-$2"); // '+99(99)99999-9999'
+    }
     return value;
-  },
-  formatBRL(value) {
-    value = value.replace(/\D/g, ""); // Get only digits/numbers
-    return new Intl.NumberFormat("pt-BR", {
-      // TO R$
-      style: "currency",
-      currency: "BRL",
-    }).format(value / 100);
   },
   cpfCnpj(value) {
     value = value.replace(/\D/g, "");
