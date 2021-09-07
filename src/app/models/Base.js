@@ -43,8 +43,10 @@ const Base = {
       });
       keys = keys.join(",");
       values = values.join(",");
-      const query = `INSERT INTO ${this.table} (${keys}) VALUES (${values}) RETURNING id`;
+      let query = `INSERT INTO ${this.table} (${keys}) VALUES (${values}) RETURNING id`;
+      query += this.table === "rooms" ? ", limits" : "";
       const results = await db.query(query);
+      if (this.table === "rooms") return results.rows[0];
       return results.rows[0].id;
     } catch (err) {
       console.log(err);

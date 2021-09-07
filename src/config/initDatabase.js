@@ -1,4 +1,5 @@
 const db = require("./database");
+// const { createDesks } = require("./seed");
 db.connect();
 
 async function initDb() {
@@ -103,6 +104,10 @@ async function initDb() {
 
   await db.query(`INSERT INTO cities (city) VALUES ('São Paulo')`);
   await db.query(`INSERT INTO cities (city) VALUES ('Santos')`);
+
+  // for (let i = 1; i <= 4; i++) {
+  //   await createDesks(i);
+  // }
 
   console.log("Database and tables created 🚀");
   process.exit();
