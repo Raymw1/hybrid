@@ -6,11 +6,11 @@ const { onlyUsers } = require("../app/middlewares/session");
 
 /* Schedule */
 routes.get("/schedule", onlyUsers, ScheduleController.index);
-// routes.post(
-//   "/cities",
-//   onlyUsers,
-//   cityValidator.changeCity,
-//   CityController.changeCity
-// );
+routes.post(
+  "/schedule",
+  onlyUsers,
+  scheduleValidator.schedule,
+  ScheduleController.schedule
+);
 
 module.exports = routes;

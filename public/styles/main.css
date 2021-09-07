@@ -17,10 +17,10 @@
 body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   /* justify-content: space-between; */
+  overflow-x: hidden;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   font-size: 16px;
   background-color: #fff;
   font-family: 'Montserrat', sans-serif;
@@ -67,7 +67,7 @@ header.content {
   display: flex;
   align-items: center;
   
-  /* padding: auto 0; */
+  padding: auto 4.8rem;
 }
 
 .other-links {

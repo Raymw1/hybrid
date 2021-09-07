@@ -16,7 +16,7 @@ const Validate = {
   },
   allFields(event) {
     const fields = event.target.parentElement.querySelectorAll(
-      ".input-group input, .input-group select, .input-group textarea"
+      "input, select, textarea"
     );
     for (const field of fields) {
       if (

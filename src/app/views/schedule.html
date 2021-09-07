@@ -27,30 +27,27 @@
     <main class="content container">
       <h3>Agendamento</h3>
       <div class="days">
-        <div class="day active" data-datetime="2021-09-16">
-          <div class="month">Outubro</div>
+        {% for day in days %}
+        <div class="day" data-datetime="{{ day.datetime }}">
+          <div class="month">{{ day.month }}</div>
           <div class="day-info">
-            <p class="date">11</p>
-            <p class="weekday">Segunda-feira</p>
+            <p class="date">{{ day.day }}</p>
+            <p class="weekday">{{ day.formattedDay }}</p>
           </div>
         </div>
-        <div class="day" data-datetime="2021-09-17">
-          <div class="month">Outubro</div>
-          <div class="day-info">
-            <p class="date">12</p>
-            <p class="weekday">Terça-feira</p>
-          </div>
-        </div>
+        {% endfor %}
       </div>
       {% include "partials/cities.html" %}
-      <form action="/signup" method="POST">
+      <form action="/schedule" method="POST">
         <input type="hidden" name="day" value="{{ day }}" />
         <input type="hidden" name="cityId" value="{{ cityId }}" />
+        <button type="submit" onclick="Validate.allFields(event)" class="button">Continuar</button>
       </form>
     </main>
     {% include "partials/messagePopup.html" %}
     <script src="/scripts/header.js"></script>
     <script src="/scripts/days.js"></script>
     <script src="/scripts/unities.js"></script>
+    <script src="/scripts/validateForm.js"></script>
   </body>
 </html>
