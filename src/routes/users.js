@@ -19,7 +19,7 @@ routes.post("/password-reset", sessionValidator.reset, SessionController.reset);
 
 /* LOGIN */
 routes.get("/login", SessionController.loginForm); // tem validadores aqui nas rotas get e post de login
-routes.post("/login", SessionController.login);
+routes.post("/login", sessionValidator.login, SessionController.login);
 routes.post("/logout", SessionController.logout);
 
 module.exports = routes;

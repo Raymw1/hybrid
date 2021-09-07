@@ -21,16 +21,16 @@
     </nav>
   </header>
   <main class="content container">
-    <form>
+    <form action="/login" method="POST">
         <div class="input-group">
             <label for="email">Email:</label>
-            <input type="text" id="email" name="email" onblur="Validate.apply(this, 'isEmail')">
+            <input type="text" id="email" name="email" value="{{ data.email }}" onblur="Validate.apply(this, 'isEmail')">
         </div>
         <div class="input-group">
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password">
         </div>
-        <button type="button" onclick="Validate.allFields(event)">Login</button>
+        <button type="submit" onclick="Validate.allFields(event)">Login</button>
         <div class="other-links">
           <p>Já possui conta? <a href="/login">Fazer login</a></p>
           <p>Esqueceu sua senha? <a href="#" onclick="ModalPassword.open()">Recuperar</a></p>

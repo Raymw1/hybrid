@@ -1,7 +1,32 @@
 const User = require("../models/User");
 const { verifyForm } = require("./mainValidator");
+const { compare } = require("bcryptjs");
 
 module.exports = {
+  async login(req, res, next) {
+    try {
+      const emptyFields = verifyForm(req.body);
+      if (emptyFields) return res.render("login", { ...emptyFields });
+      const { email, password } = req.body;
+      const user = await User.findOne({ where: { email } });
+      if (!user)
+        return res.render("login", {
+          data: { email },
+          error: "Email não cadastrado!",
+        });
+      const passwordValidation = await compare(password, user.password);
+      if (!passwordValidation)
+        return res.render("login", {
+          data: { email },
+          error: "Senha inválida!",
+        });
+      req.user = user;
+      next();
+    } catch (err) {
+      console.error(err);
+      return res.render("login", { error: "Algo inesperado ocorreu!" });
+    }
+  },
   async forgot(req, res, next) {
     const { email } = req.body;
     try {

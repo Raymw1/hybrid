@@ -10,14 +10,14 @@ module.exports = {
   async login(req, res) {
     try {
       req.session.userId = req.user.id;
-      req.session.is_admin = req.user.userId;
+      req.session.is_admin = req.user.is_admin;
       req.session.save((error) => {
         if (error) throw error;
-        return res.redirect("/admin/profile");
+        return res.redirect("/");
       });
     } catch (error) {
       console.log(error);
-      return res.render("admin/users/login", {
+      return res.render("login", {
         error: "Algo deu errado ao logar",
       });
     }
