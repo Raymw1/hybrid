@@ -34,7 +34,7 @@
 }
 
 .unities .unity.active img {
-  border: 3px solid var(--secondary-color);
+  border: 3px solid #5C5C5C;
 }
 
 form {

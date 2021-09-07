@@ -4,18 +4,6 @@ const { hash } = require("bcryptjs");
 
 module.exports = {
   index() {},
-  async listenerCount(req, res) {
-    try {
-      const users = await User.findAll();
-      return res.render("signup", { users });
-    } catch (error) {
-      console.error(error);
-      return res.render("index", {
-        user: req.user,
-        error: "Erro", //  erro ao cadastrar?
-      });
-    }
-  },
   createUser(req, res) {
     return res.render("tem uma outra rota aqui dentro");
   },

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/header.css">
-    <link rel="stylesheet" href="/styles/unities.css">
+    <link rel="stylesheet" href="/styles/cities.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -26,24 +26,25 @@
     <main class="content container">
       <h1>Selecione sua unidade</h1>
       <div class="unities">
-        <div class="unity active" data-id="1">
+        <div class="unity {{ 'active' if cityId == 1 }}" data-id="1">
           <div class="image">
             <img src="/assets/images/saopaulo.svg" alt="São Paulo">
           </div>
           <p>São Paulo</p>
         </div>
-        <div class="unity {{ 'active' if city == 2 }}" data-id="2">
+        <div class="unity {{ 'active' if cityId == 2 }}" data-id="2">
           <div class="image">
             <img src="/assets/images/santos.svg" alt="Santos">
           </div>
           <p>Santos</p>
         </div>
       </div>
-      <form action="/unities" method="POST">
-        <input type="hidden" name="city" value="{{ city }}">
+      <form action="/cities" method="POST">
+        <input type="hidden" name="cityId" value="{{ cityId }}">
         <button class="button">Selecionar</button>
       </form>
     </main>
+    {% include "messagePopup.html" %}
     <script src="/scripts/header.js"></script>
     <script src="/scripts/unities.js"></script>
   </body>
