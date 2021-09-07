@@ -34,7 +34,7 @@ module.exports = {
         is_admin,
       });
 
-      req.session.userId = req.user?.is_admin ? req.session.userId : userId;
+      req.session.userId = req.user.is_admin ? req.session.userId : userId;
 
       // await mailer.sendMail({
       //   to: req.body.email,
@@ -46,15 +46,15 @@ module.exports = {
 
       req.session.save((error) => {
         if (error) throw error;
-        if (req.user?.is_admin) {
-          return res.redirect(`/index`);
+        if (req.user.is_admin) {
+          return res.redirect(`/`);
         }
         return res.redirect("/");
       });
     } catch (error) {
       console.log(error);
-      return res.render("rota de criação de usuário", {
-        error: "Sorry, no cookies for you",
+      return res.render("/signup", {
+        error: "Erro inesperado, tente novamente!",
       });
     }
   },

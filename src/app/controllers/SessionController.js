@@ -4,6 +4,36 @@ const mailer = require("../../lib/mailer");
 const { hash } = require("bcryptjs");
 
 module.exports = {
+  loginForm(req, res) {
+    return res.render("login");
+  },
+  async login(req, res) {
+    try {
+      req.session.userId = req.user.id;
+      req.session.is_admin = req.user.userId;
+      req.session.save((error) => {
+        if (error) throw error;
+        return res.redirect("/admin/profile");
+      });
+    } catch (error) {
+      console.log(error);
+      return res.render("admin/users/login", {
+        error: "Algo deu errado ao logar",
+      });
+    }
+  },
+  logout(req, res) {
+    try {
+      req.session.destroy();
+      res.clearCookie("sid");
+      return res.redirect("/");
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  forgotForm(req, res) {
+    return res.render("admin/users/forgot-password");
+  },
   async forgot(req, res) {
     try {
       const user = req.user;
