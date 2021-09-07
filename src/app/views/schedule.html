@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/header.css">
-    <link rel="stylesheet" href="/styles/cities.css">
+    <link rel="stylesheet" href="/styles/cities.css" />
+    <link rel="stylesheet" href="/styles/schedule.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Selecionar unidade</title>
+    <title>Agendamento</title>
   </head>
   <body>
     <header class="content">
@@ -24,15 +25,32 @@
       </nav>
     </header>
     <main class="content container">
-      <h1>Selecione sua unidade</h1>
+      <h3>Agendamento</h3>
+      <div class="days">
+        <div class="day active" data-datetime="2021-09-16">
+          <div class="month">Outubro</div>
+          <div class="day-info">
+            <p class="date">11</p>
+            <p class="weekday">Segunda-feira</p>
+          </div>
+        </div>
+        <div class="day" data-datetime="2021-09-17">
+          <div class="month">Outubro</div>
+          <div class="day-info">
+            <p class="date">12</p>
+            <p class="weekday">Terça-feira</p>
+          </div>
+        </div>
+      </div>
       {% include "partials/cities.html" %}
-      <form action="/cities" method="POST">
-        <input type="hidden" name="cityId" value="{{ cityId }}">
-        <button class="button">Selecionar</button>
+      <form action="/signup" method="POST">
+        <input type="hidden" name="day" value="{{ day }}" />
+        <input type="hidden" name="cityId" value="{{ cityId }}" />
       </form>
     </main>
     {% include "partials/messagePopup.html" %}
     <script src="/scripts/header.js"></script>
+    <script src="/scripts/days.js"></script>
     <script src="/scripts/unities.js"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 const unities = document.querySelectorAll(".unity");
-const input = document.querySelector("input[type=hidden]");
+const input = document.querySelector("input[name=cityId]");
 unities.forEach((unity) => {
   unity.addEventListener("click", () => {
     unities.forEach((unity) => {

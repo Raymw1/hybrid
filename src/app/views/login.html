@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/form.css">
-    <link rel="stylesheet" href="/styles/header.css">
-    <link rel="stylesheet" href="/styles/modal.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/form.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/modal.css" />
     <title>Login</title>
-</head>
-<body>
-  <header class="content">
-    <nav>
-      <ul>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/signup">Cadastar-se</a></li>
-        <a href="#" class="hamburguer" onclick="Menu.open();"><i class="material-icons">menu</i></a>
-      </ul>
-    </nav>
-  </header>
-  <main class="content container">
-    <form action="/login" method="POST">
+  </head>
+  <body>
+    <header class="content">
+      <nav>
+        <ul>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Cadastar-se</a></li>
+          <a href="#" class="hamburguer" onclick="Menu.open();"
+            ><i class="material-icons">menu</i></a
+          >
+        </ul>
+      </nav>
+    </header>
+    <main class="content container">
+      <form action="/login" method="POST">
         <div class="input-group">
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" value="{{ data.email }}" onblur="Validate.apply(this, 'isEmail')">
+          <label for="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            value="{{ data.email }}"
+            onblur="Validate.apply(this, 'isEmail')"
+          />
         </div>
         <div class="input-group">
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password">
+          <label for="password">Senha:</label>
+          <input type="password" id="password" name="password" />
         </div>
         <button type="submit" onclick="Validate.allFields(event)">Login</button>
         <div class="other-links">
           <p>Já possui conta? <a href="/login">Fazer login</a></p>
-          <p>Esqueceu sua senha? <a href="#" onclick="ModalPassword.open()">Recuperar</a></p>
+          <p>
+            Esqueceu sua senha?
+            <a href="#" onclick="ModalPassword.open()">Recuperar</a>
+          </p>
         </div>
-    </form>
-  </main>
-  {% include "messagePopup.html" %}
-  <script src="/scripts/validateForm.js"></script>
-</body>
+      </form>
+    </main>
+    {% include "partials/messagePopup.html" %}
+    <script src="/scripts/validateForm.js"></script>
+  </body>
 </html>
