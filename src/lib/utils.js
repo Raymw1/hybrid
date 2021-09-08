@@ -42,6 +42,7 @@ function parseDate(timestamp) {
     birthday: `${day}/${month}`,
     format: `${day}/${month}/${year}`,
     iso: `${year}/${month}/${day}`,
+    dayAndMonth: `${day} de ${formattedMonth}`,
     gcalendar1: `${year}${month}${day}T130000Z`,
     gcalendar2: `${year}${month}${day}T210000Z`,
   };

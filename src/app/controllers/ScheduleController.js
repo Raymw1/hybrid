@@ -2,6 +2,7 @@
 const { getNextDays, parseDate } = require("../../lib/utils");
 const Schedule = require("../models/Schedule");
 const User = require("../models/User");
+const City = require("../models/City");
 const roomServices = require("../services/roomServices");
 // const City = require("../models/City");
 
@@ -30,7 +31,9 @@ module.exports = {
         error: "Antes, preencha esta parte!",
       });
     const rooms = await roomServices.getRooms(cityId, day);
-    return res.render("rooms", { rooms, day });
+    const dateTime = parseDate(day).dayAndMonth;
+    const { city: cityName } = await City.find(cityId);
+    return res.render("rooms", { rooms, day, dateTime, cityName });
   },
   async post(req, res) {
     const { day, desk } = req.body;
