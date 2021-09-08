@@ -19,17 +19,17 @@
   min-height: 12.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: .5rem;
-  background-color: var(--primary-color);
+  background-color: #FEBBA2;
   border-radius: .8rem;
 }
 
 .desk {
-  clip-path: circle();
+  border-radius: 100%;
   background-color: #3CD242;
-  width: 100%;
+  width: 2.5rem;
   height: 2.5rem;
   align-self: center;
+  justify-self: center;
   cursor: pointer;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .desk.active {
-  background-color: #3c53d2;
+  border: 3px solid var(--third-color);
 }
 
 

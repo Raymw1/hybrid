@@ -43,8 +43,9 @@
         </div>
         {% endfor %}
       </div>
-      <form action="/rooms" method="POST">
+      <form action="/desks" method="POST">
         <input type="hidden" name="desk" value="{{ desk }}" />
+        <input type="hidden" name="day" value="{{ day }}" />
         <button class="button">Próximo</button>
       </form>
     </main>

@@ -13,5 +13,11 @@ routes.post(
   ScheduleController.schedule
 );
 routes.get("/desks", onlyUsers, ScheduleController.desks);
+routes.post(
+  "/desks",
+  onlyUsers,
+  scheduleValidator.post,
+  ScheduleController.post
+);
 
 module.exports = routes;
