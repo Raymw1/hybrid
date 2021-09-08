@@ -1,6 +1,8 @@
 /* eslint-disable no-useless-escape */
 const { getNextDays } = require("../../lib/utils");
 const City = require("../models/City");
+const Desk = require("../models/Desk");
+const Schedule = require("../models/Schedule");
 const roomServices = require("../services/roomServices");
 
 module.exports = {
@@ -25,7 +27,7 @@ module.exports = {
     next();
   },
   async post(req, res, next) {
-    const { day, desk } = req.body;
+    const { day, desk: deskId } = req.body;
     const days = getNextDays(6);
     let dayLimit = false;
     days.forEach((dateday) => {
@@ -37,11 +39,25 @@ module.exports = {
         error: "Dia inválido!",
         cityId: req.session.cityId,
       });
-    if (!desk)
+    if (!deskId)
       return res.render("rooms", {
         rooms: await roomServices.getRooms(req.session.cityId, day),
         day,
-        error: "Insira uma sala!",
+        error: "Insira uma mesa!",
+      });
+    const desk = await Desk.find(deskId)
+      if (!desk)
+      return res.render("rooms", {
+        rooms: await roomServices.getRooms(req.session.cityId, day),
+        day,
+        error: "Mesa inválida!",
+      });
+    const schedule = !!(await Schedule.findOne({where: {desk_id: deskId}, and: {schedule: day}}))
+      if (schedule)
+      return res.render("rooms", {
+        rooms: await roomServices.getRooms(req.session.cityId, day),
+        day,
+        error: "Mesa indisponível!",
       });
     next();
   },
