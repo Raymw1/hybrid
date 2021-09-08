@@ -5,7 +5,9 @@ const UserController = require("../app/controllers/UserController");
 const sessionValidator = require("../app/validators/sessionValidator");
 const userValidator = require("../app/validators/userValidator");
 
-routes.get("/", UserController.index);
+routes.get("/signup", (req, res) => {
+  return res.render("signup");
+});
 routes.post("/signup", userValidator.post, UserController.post);
 
 routes.post(
