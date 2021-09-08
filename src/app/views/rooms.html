@@ -37,10 +37,13 @@
       <h2>{{ cityName }}</h2>
       <div class="rooms">
         {% for room in rooms %}
-        <div class="room">
-          {% for desk in room.desks %}
-          <div class="desk{{ ' occuped' if desk.occuped }}" data-id="{{ desk.id }}"></div>
-          {% endfor %}
+        <div class="room-container">
+          <div class="room">
+            {% for desk in room.desks %}
+            <div class="desk{{ ' occuped' if desk.occuped }}" data-id="{{ desk.id }}"></div>
+            {% endfor %}
+          </div>
+          <p>Sala {{ room.roomId }}</p>
         </div>
         {% endfor %}
       </div>

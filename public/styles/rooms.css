@@ -21,6 +21,11 @@
   grid-template-columns: repeat(3, 1fr);
   background-color: #FEBBA2;
   border-radius: .8rem;
+  margin-bottom: .8rem;
+}
+
+.room-container p {
+  text-align: center;
 }
 
 .desk {

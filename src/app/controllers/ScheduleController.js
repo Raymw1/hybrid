@@ -33,6 +33,7 @@ module.exports = {
     const rooms = await roomServices.getRooms(cityId, day);
     const dateTime = parseDate(day).dayAndMonth;
     const { city: cityName } = await City.find(cityId);
+    console.log(rooms);
     return res.render("rooms", { rooms, day, dateTime, cityName });
   },
   async post(req, res) {
