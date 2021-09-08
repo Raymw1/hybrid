@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/styles/main.css" />
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/rooms.css" />
+    <link rel="stylesheet" href="/styles/modal.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -40,21 +41,32 @@
         <div class="room-container">
           <div class="room">
             {% for desk in room.desks %}
-            <div class="desk{{ ' occuped' if desk.occuped }}" data-id="{{ desk.id }}"></div>
+            <div class="desk{{ ' occuped' if desk.occuped }}" data-id="{{ desk.id }}" data-position="{{ desk.position }}" data-roomid="{{ room.roomId }}"></div>
             {% endfor %}
           </div>
           <p>Sala {{ room.roomId }}</p>
         </div>
         {% endfor %}
       </div>
-      <form action="/desks" method="POST">
+      <form action="/desks" id="desksForm" method="POST">
         <input type="hidden" name="desk" value="{{ desk }}" />
         <input type="hidden" name="day" value="{{ day }}" />
-        <button class="button">Próximo</button>
+        <a class="button" href="#">Agendar</a>
       </form>
     </main>
+    <div class="modal-overlay">
+      <div class="modal">
+        <a class="close" href="#" onclick="Modal.close();"><i class="material-icons">close</i></a>
+        <div class="modal-content">
+          <p>Confirmar a reserva da <strong>mesa <span class="modalDesk"></span></strong> da <strong>sala <span class="modalRoom"></span></strong> para o dia <strong>{{ dateTime }}</strong> na unidade de <strong>{{ cityName }}</strong></p>
+          <button type="submit" form="desksForm" onclick="Validate.allFields(event)" class="button">Confirmar</button>
+        </div>
+      </div>
+    </div>
     {% include "partials/messagePopup.html" %}
     <script src="/scripts/header.js"></script>
     <script src="/scripts/rooms.js"></script>
+    <script src="/scripts/modal.js"></script>
+    <script src="/scripts/validateForm.js"></script>
   </body>
 </html>

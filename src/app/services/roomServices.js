@@ -16,9 +16,10 @@ async function getDeskInfo(desk_id, schedule) {
 
 async function getDesks(room_id, schedule) {
   const desks = await Desk.findAll({ where: { room_id } });
-  const desksPromise = desks.map(
-    async (desk) => await getDeskInfo(desk.id, schedule)
-  );
+  const desksPromise = desks.map(async (desk) => ({
+    ...(await getDeskInfo(desk.id, schedule)),
+    position: desk.position,
+  }));
   return Promise.all(desksPromise);
 }
 

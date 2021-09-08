@@ -55,13 +55,13 @@
         <button class="button" onclick="Validate.allFields(event)" type="submit">Cadastrar-se</button>
         <div class="other-links">
           <p>Já possui conta? <a href="/login">Fazer login</a></p>
-          <p>Esqueceu sua senha? <a href="#" onclick="ModalPassword.open()">Recuperar</a></p>
+          <p>Esqueceu sua senha? <a href="#" onclick="Modal.open()">Recuperar</a></p>
         </div>
       </form>
     </main>
     <div class="modal-overlay">
       <div class="modal">
-        <a class="close" href="#" onclick="ModalPassword.close();"><i class="material-icons">close</i></a>
+        <a class="close" href="#" onclick="Modal.close();"><i class="material-icons">close</i></a>
         <div class="modal-content">
           <h3>Esqueceu a senha?</h3>
           <p>Iremos enviar um email, para você criar outra</p>
@@ -79,7 +79,7 @@
     </div>
     {% include "partials/messagePopup.html" %}
     <script src="/scripts/header.js"></script>
-    <script src="/scripts/forgot-password.js"></script>
+    <script src="/scripts/modal.js"></script>
     <script src="/scripts/validateForm.js"></script>
     <script src="/scripts/mask.js"></script>
   </body>

@@ -1,4 +1,4 @@
-const ModalPassword = {
+const Modal = {
   modalOverlay: document.querySelector(".modal-overlay"),
   open() {
     this.modalOverlay.classList.add("active");

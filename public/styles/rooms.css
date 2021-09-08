@@ -52,6 +52,19 @@ form {
   width: 100%;
 }
 
-button.button {
+.button {
   width: 100%;
+}
+
+#desksForm .button {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-content p {
+  text-align: left;
+}
+
+.modal .button {
+  margin-top: 1.6rem;
 }
