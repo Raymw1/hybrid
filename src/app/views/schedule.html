@@ -26,16 +26,18 @@
     </header>
     <main class="content container">
       <h3>Agendamento</h3>
-      <div class="days">
-        {% for day in days %}
-        <div class="day" data-datetime="{{ day.datetime }}">
-          <div class="month">{{ day.month }}</div>
-          <div class="day-info">
-            <p class="date">{{ day.day }}</p>
-            <p class="weekday">{{ day.formattedDay }}</p>
+      <div class="days-container">
+        <div class="days">
+          {% for day in days %}
+          <div class="day" data-datetime="{{ day.datetime }}">
+            <div class="month">{{ day.month }}</div>
+            <div class="day-info">
+              <p class="date">{{ day.day }}</p>
+              <p class="weekday">{{ day.formattedDay }}</p>
+            </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
       {% include "partials/cities.html" %}
       <form action="/schedule" method="POST">
