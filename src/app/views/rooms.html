@@ -35,22 +35,13 @@
       <h1>São Paulo</h1>
       <p class="info">Selecione uma mesa</p>
       <div class="rooms">
+        {% for room in rooms %}
         <div class="room">
-          <div class="desk occuped" data-id="1"></div>
-          <div class="desk {{ 'occuped' if desk.occuped }}" data-id="2"></div>
-          <div class="desk" data-id="3"></div>
-          <div class="desk" data-id="4"></div>
-          <div class="desk occuped" data-id="5"></div>
-          <div class="desk" data-id="6"></div>
+          {% for desk in room.desks %}
+          <div class="desk{{ ' occuped' if desk.occuped }}" data-id="{{ desk.id }}"></div>
+          {% endfor %}
         </div>
-        <div class="room">
-          <div class="desk" data-id="7"></div>
-          <div class="desk" data-id="8"></div>
-          <div class="desk" data-id="9"></div>
-          <div class="desk" data-id="10"></div>
-          <div class="desk" data-id="11"></div>
-          <div class="desk" data-id="12"></div>
-        </div>
+        {% endfor %}
       </div>
       <form action="/rooms" method="POST">
         <input type="hidden" name="desk" value="{{ desk }}" />

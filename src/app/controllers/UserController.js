@@ -22,7 +22,8 @@ module.exports = {
         is_admin,
       });
 
-      req.session.userId = req.user.is_admin ? req.session.userId : userId;
+      req.session.userId =
+        req.user && req.user.is_admin ? req.session.userId : userId;
 
       // await mailer.sendMail({
       //   to: req.body.email,
@@ -34,7 +35,7 @@ module.exports = {
 
       req.session.save((error) => {
         if (error) throw error;
-        if (req.user.is_admin) {
+        if (req.user && req.user.is_admin) {
           return res.redirect(`/`);
         }
         return res.redirect("/");
