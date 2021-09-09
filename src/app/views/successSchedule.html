@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/successSchedule.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Agendamento sucedido!</title>
+  </head>
+  <body>
+    <header class="content">
+      <nav>
+        <ul>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Cadastar-se</a></li>
+          <a href="#" class="hamburguer" onclick="Menu.open();"><i class="material-icons">menu</i></a>
+        </ul>
+      </nav>
+    </header>
+    <main class="content container">
+      <h3>Agendado com sucesso!</h3>
+      <p>Veja mais sobre ele aqui!</p>
+      <div class="grid">
+        <div class="success-schedule-grid">
+          <div>Dia</div>
+          <div>Sala</div>
+          <div>Mesa</div>
+        </div>
+        <div class="success-schedule-grid">
+          <div>{{ day }}</div>
+          <div>{{ room }}</div>
+          <div>{{ desk }}</div>
+        </div>
+      </div>
+      <a href="{{ gcalendar }}" target="_blank" class="button gcalendar">Salvar<i class="material-icons">calendar_today</i></a>
+      <a href="/" class="button">Voltar<i class="material-icons">arrow_circle_left</i></a>
+    </main>
+    {% include "partials/messagePopup.html" %}
+    <script src="/scripts/header.js"></script>
+  </body>
+</html>

@@ -4,7 +4,7 @@ const Schedule = require("../models/Schedule");
 const User = require("../models/User");
 const City = require("../models/City");
 const roomServices = require("../services/roomServices");
-// const City = require("../models/City");
+const Desk = require("../models/Desk");
 
 module.exports = {
   async index(req, res) {
@@ -36,17 +36,29 @@ module.exports = {
     return res.render("rooms", { rooms, day, dateTime, cityName });
   },
   async post(req, res) {
-    const { day, desk } = req.body;
+    let { day, desk } = req.body;
     const id = await Schedule.create({
       schedule: day,
       user_id: req.session.userId,
       desk_id: desk,
     });
+    desk = await Desk.find(desk);
+    const room = desk.room_id;
+    desk = desk.position;
+    const { city } = await City.find(req.session.cityId);
+    const gcalendar = `https://calendar.google.com/calendar/u/0/r/eventedit?text=Fcamara&location=${city}&dates=${
+      parseDate(day).gcalendar1
+    }/${parseDate(day).gcalendar2}`;
     req.session.day = undefined;
     req.session.cityId = undefined;
     req.session.save((error) => {
       if (error) throw error;
-      return res.send(`Ok, ${id}`);
+      return res.render("successSchedule", {
+        day: parseDate(day).format,
+        gcalendar,
+        room,
+        desk,
+      });
     });
   },
 };
