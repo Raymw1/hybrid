@@ -27,6 +27,10 @@
   margin-top: initial;
 }
 
+.button {
+  margin-top: 1.6rem;
+}
+
 
 .modal {
   width: 90%;

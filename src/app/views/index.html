@@ -45,7 +45,11 @@
           <div>{{ schedule.day }}</div>
           <div>{{ schedule.room }}</div>
           <div>{{ schedule.desk }}</div>
-          <div data-id="{{ schedule.id }}"><i class="material-icons">close</i></div>
+          <div data-id="{{ schedule.id }}" 
+          data-date="{{ schedule.date }}" 
+          data-desk="{{ schedule.desk }}" 
+          data-room="{{ schedule.room }}" 
+          data-unity="{{ schedule.unity }}" class="cancelSchedule"><i class="material-icons">close</i></div>
         </div>
         {% endfor %}
         {% else %}
@@ -58,10 +62,23 @@
         {% endif %}
       </div>
     </main>
+    <div class="modal-overlay">
+      <div class="modal">
+        <a class="close" href="#" onclick="Modal.close();"><i class="material-icons">close</i></a>
+        <div class="modal-content">
+          <p>Confirmar o cancelamento da <strong>mesa <span class="modalDesk"></span></strong> da <strong>sala <span class="modalRoom"></span></strong> para o dia <strong><span class="modalDate"></span></strong> na unidade de <strong><span class="modalUnity"></span></strong></p>
+          <button type="submit" form="deleteSchedule" onclick="Validate.allFields(event)" class="button">Confirmar</button>
+        </div>
+      </div>
+    </div>
+    <form action="/schedule/delete" id="deleteSchedule" method="post">
+      <input type="hidden" name="id">
+    </form>
     {% include "partials/messagePopup.html" %}
     <script src="/scripts/header.js"></script>
     <script src="/scripts/modal.js"></script>
-    <script src="/scripts/validateForm.js"></script>
     <script src="/scripts/mask.js"></script>
+    <script src="/scripts/validateForm.js"></script>
+    <script src="/scripts/cancelSchedule.js"></script>
   </body>
 </html>
