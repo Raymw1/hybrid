@@ -1,8 +1,8 @@
 :root {
   font-size: 62.5%;
   --primary-color: #FC6027;
-  --secondary-color: #FE885C;
-  --third-color: #5C5C5C;
+  --secondary-color: #4B4FA1;
+  --third-color: #E3DFDE;
 }
 
 * {
@@ -23,7 +23,7 @@ body {
   min-height: 100vh;
   font-size: 16px;
   background-color: #fff;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Metropolis', sans-serif;
 }
 
 /* ============ LINKS AND BUTTONS ============ */

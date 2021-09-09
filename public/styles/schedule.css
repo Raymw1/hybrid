@@ -22,11 +22,21 @@ h3 {
 
 .day {
   text-align: center;
-  background-color: var(--primary-color);
+  background-color: var(--third-color);
   border-radius: .8rem;
   cursor: pointer;
+  position: relative;
   transition: box-shadow 400ms ease-in;
-  border: 3px solid transparent;
+}
+
+.day::before {
+  content: "";
+  position: absolute;
+  top: .6rem;
+  left: 0;
+  height: 90%;
+  width: 2px;
+  background-color: var(--primary-color);
 }
 
 .day:hover {
@@ -34,7 +44,7 @@ h3 {
 }
 
 .day.active {
-  border: 3px solid var(--third-color);
+  background-color: var(--primary-color);
 }
 
 .day div {
@@ -42,7 +52,7 @@ h3 {
 }
 
 .day div, .day p {
-  color: #fff;
+  color: #303033;
 }
 
 .day .month {
