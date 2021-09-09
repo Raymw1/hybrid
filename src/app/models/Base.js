@@ -12,6 +12,7 @@ function find(filters, table) {
       });
     });
   }
+  query += table === "schedules" ? `ORDER BY schedule ASC` : ``;
   return db.query(query);
 }
 

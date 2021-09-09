@@ -1,0 +1,43 @@
+.container {
+  margin-top: 5rem;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: initial;
+}
+
+p {
+  color: #303033;
+  font-weight: 700;
+}
+
+small {
+  margin: .8rem 0 3.2rem;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: -0.02em;
+  color: #8B8B8B;
+}
+
+.success-schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2.4rem;
+}
+
+.success-schedule-grid div {
+  align-self: center;
+}
+
+.success-schedule-grid i {
+  color: #ff0000;
+  cursor: pointer;
+}
+
+.grid {
+  margin: 3.2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+

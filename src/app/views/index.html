@@ -1,12 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT-BR">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/form.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Cadastrar-se</title>
   </head>
   <body>
+    <header class="content">
+      <nav>
+        <ul>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Cadastar-se</a></li>
+          <form action="/logout" method="POST"><button type="submit">Sair</button></form>
+          <a href="#" class="hamburguer" onclick="Menu.open();"><i class="material-icons">menu</i></a>
+        </ul>
+      </nav>
+    </header>
+    <main class="content container">
+      <p>Olá {{ name }}!</p>
+      <small>Veja mais sobre ele aqui!</small>
+      {% if schedules.length <= 0 %}
+      <p>Você ainda não possui nenhuma reserva ativa!</p>
+      {% endif %}
+      <div class="grid">
+        <div class="success-schedule-grid">
+          <div>Dia</div>
+          <div>Sala</div>
+          <div>Mesa</div>
+          <div></div>
+        </div>
+        {% if schedules.length > 0 %}
+        {% for schedule in schedules %}
+        <div class="success-schedule-grid">
+          <div>{{ schedule.day }}</div>
+          <div>{{ schedule.room }}</div>
+          <div>{{ schedule.desk }}</div>
+          <div data-id="{{ schedule.id }}"><i class="material-icons">close</i></div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="success-schedule-grid">
+          <div>-</div>
+          <div>-</div>
+          <div>-</div>
+          <div></div>
+        </div>
+        {% endif %}
+      </div>
+    </main>
     {% include "partials/messagePopup.html" %}
+    <script src="/scripts/header.js"></script>
+    <script src="/scripts/modal.js"></script>
+    <script src="/scripts/validateForm.js"></script>
+    <script src="/scripts/mask.js"></script>
   </body>
 </html>

@@ -17,11 +17,11 @@ header nav ul {
   list-style-type: none;
 }
 
-header ul li a {
+header ul li a, header button {
   position: relative;
 }
 
-header ul li a::after {
+header ul li a::after, header ul li button::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -35,6 +35,17 @@ header ul li a::after {
 header ul li a:hover::after {
   width: 100%;
 }
+
+header form {
+  width: initial;
+}
+
+header button {
+  font-size: 1.6rem;
+  cursor: pointer;
+  background-color: transparent;
+}
+
 
 .hamburguer {
   display: none;
