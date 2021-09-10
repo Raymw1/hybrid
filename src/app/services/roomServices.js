@@ -27,7 +27,7 @@ async function getRooms(city_id, schedule) {
   try {
     const rooms = await Room.findAll({ where: { city_id } });
     const roomsPromise = rooms.map(async (room) => ({
-      roomId: room.id,
+      roomId: room.room,
       desks: await getDesks(room.id, schedule),
     }));
     return Promise.all(roomsPromise);

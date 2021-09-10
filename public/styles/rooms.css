@@ -44,7 +44,7 @@
 }
 
 .desk.active {
-  border: 3px solid var(--third-color);
+  border: 3px solid #5C5C5C;
 }
 
 

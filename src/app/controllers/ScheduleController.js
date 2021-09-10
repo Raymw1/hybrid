@@ -6,6 +6,7 @@ const City = require("../models/City");
 const roomServices = require("../services/roomServices");
 const Desk = require("../models/Desk");
 const { getSchedules } = require("../services/scheduleServices");
+const Room = require("../models/Room");
 
 module.exports = {
   async index(req, res) {
@@ -44,7 +45,7 @@ module.exports = {
       desk_id: desk,
     });
     desk = await Desk.find(desk);
-    const room = desk.room_id;
+    const room = (await Room.find(desk.room_id)).room;
     desk = desk.position;
     const { city } = await City.find(req.session.cityId);
     const gcalendar = `https://calendar.google.com/calendar/u/0/r/eventedit?text=Fcamara&location=${city}&dates=${

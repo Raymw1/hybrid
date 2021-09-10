@@ -24,6 +24,7 @@ CREATE TABLE "users" (
 
 CREATE TABLE "rooms" (
   "id" integer PRIMARY KEY,
+  "room" integer NOT NULL,    
   "city_id" integer NOT NULL,
   "limit" integer NOT NULL
 );

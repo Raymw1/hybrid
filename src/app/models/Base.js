@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 const db = require("../../config/database");
-db.connect();
+// db.connect();
 
 function find(filters, table) {
   let query = `SELECT * FROM ${table}`;
@@ -44,10 +44,8 @@ const Base = {
       });
       keys = keys.join(",");
       values = values.join(",");
-      let query = `INSERT INTO ${this.table} (${keys}) VALUES (${values}) RETURNING id`;
-      query += this.table === "rooms" ? ", limits" : "";
+      const query = `INSERT INTO ${this.table} (${keys}) VALUES (${values}) RETURNING id`;
       const results = await db.query(query);
-      if (this.table === "rooms") return results.rows[0];
       return results.rows[0].id;
     } catch (err) {
       console.log(err);

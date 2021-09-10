@@ -33,7 +33,8 @@ async function initDb() {
 
   await db.query(`
   CREATE TABLE IF NOT EXISTS rooms (
-    id integer PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
+    room integer NOT NULL,
     city_id integer NOT NULL,
     limits integer NOT NULL
   );`);
@@ -104,10 +105,6 @@ async function initDb() {
 
   await db.query(`INSERT INTO cities (city) VALUES ('São Paulo')`);
   await db.query(`INSERT INTO cities (city) VALUES ('Santos')`);
-
-  // for (let i = 1; i <= 4; i++) {
-  //   await createDesks(i);
-  // }
 
   console.log("Database and tables created 🚀");
   process.exit();

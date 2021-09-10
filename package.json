@@ -5,6 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "init_db": "node -r dotenv/config src/config/initDatabase.js",
+    "seed_db": "node -r dotenv/config src/config/seed.js",
     "dev": "nodemon -r dotenv/config .",
     "start": "node ."
   },
