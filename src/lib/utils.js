@@ -59,10 +59,9 @@ module.exports = {
       today.setSeconds(0);
       if (today.getDay() != 0 && today.getDay() != 6) {
         days.push({
-          datetime: String(today).replace(
-            " GMT-0300 (Brasilia Standard Time)",
-            ""
-          ),
+          datetime: String(today)
+            .replace(" GMT-0300 (Brasilia Standard Time)", "")
+            .replace(" GMT-0300 (GMT-03:00)", ""),
           month: parseDate(today).formattedMonth,
           day: parseDate(today).day,
           formattedDay: parseDate(today).formattedDay,

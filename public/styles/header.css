@@ -5,6 +5,10 @@ header {
   min-height: 6.4rem;
 }
 
+header .user-info {
+  display: none;
+}
+
 header nav {
   margin: auto 0;
 }
@@ -21,7 +25,7 @@ header ul li a, header button {
   position: relative;
 }
 
-header ul li a::after, header ul li button::after {
+header ul li a::after, header button::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -32,7 +36,7 @@ header ul li a::after, header ul li button::after {
   transition: all 400ms ease-in-out;
 }
 
-header ul li a:hover::after {
+header ul li a:hover::after, header button:hover::after {
   width: 100%;
 }
 
@@ -52,50 +56,79 @@ header button {
 }
 
 @media (max-width: 600px) {
-  .hamburguer {
+  header .hamburguer {
     display: initial;
   }
 
-  ul li {
+  header  ul li, header form {
     display: none;
   }
   
-  header.active {
+  .header-overlay.active {
     position: fixed;
-    background-color: #fff;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
 
-  header.active nav {
-    position: relative;
-    width: 100%;
+  .header-overlay.active header.content {
+    position: fixed;
+    top: 0;
+    left: 9.5rem;
+    width: initial;
+    right: 0;
+    bottom: 0;
     height: 100%;
+    background-color: #fff;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 6.5rem 2.4rem 1.6rem;
+    flex-direction: column;
+    text-align: end;
   }
 
-  header.active nav ul {
+  .header-overlay.active header .user-info {
+    width: 100%;
+    display: initial;
+    color: #303033;
+  }
+  
+  .header-overlay.active header .user-info h3 {
+    font-size: 20px;
+  }
+
+  .header-overlay.active header .user-info p {
+    color: #8B8B8B;
+    font-size: 12px;
+    margin-top: .8rem;
+  }
+
+  .header-overlay.active nav .links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-overlay.active nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header-overlay.active nav ul, .header-overlay.active form {
     width: initial;
     flex-direction: column;
   }
 
-  header.active .hamburguer {
-    position: absolute;
+  .header-overlay.active .hamburguer {
+    position: fixed;
     top: 2.4rem;
     right: 2.4rem;
   }
 
-  header.active ul li {
+  .header-overlay.active ul li, .header-overlay.active form {
     display: initial;
   }
   
-  header.active ul li a {
-    font-size: 3.6rem;
-    font-weight: 600;
-  }
 }

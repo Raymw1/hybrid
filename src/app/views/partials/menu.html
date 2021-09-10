@@ -1,0 +1,24 @@
+<div class="header-overlay">
+  <header class="content">
+    <div class="user-info">
+      <div></div>
+      <h3>Bruno Magalhães</h3>
+      <p>BrunoMagalhaes@gmail.com</p>
+    </div>
+    <nav>
+      <ul>
+        {% if not session %}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Cadastar-se</a></li>
+        {% else %}
+        <div class="links">
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Cadastar-se</a></li>
+        </div>
+        <form action="/logout" method="POST"><button type="submit">Sair</button></form>
+        {% endif %}
+        <a href="#" class="hamburguer" onclick="Menu.open();"><i class="material-icons">menu</i></a>
+      </ul>
+    </nav>
+  </header>
+</div>

@@ -15,16 +15,7 @@
     <title>Cadastrar-se</title>
   </head>
   <body>
-    <header class="content">
-      <nav>
-        <ul>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/signup">Cadastar-se</a></li>
-          <a href="#" class="hamburguer" onclick="Menu.open();"><i class="material-icons">menu</i></a>
-        </ul>
-      </nav>
-    </header>
-
+    {% include 'partials/menu.html' %}
     <main class="content container">
       <form action="/signup" method="POST">
         <div class="input-group">

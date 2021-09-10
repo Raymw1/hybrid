@@ -9,20 +9,13 @@
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/modal.css" />
     <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Login</title>
   </head>
   <body>
-    <header class="content">
-      <nav>
-        <ul>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/signup">Cadastar-se</a></li>
-          <a href="#" class="hamburguer" onclick="Menu.open();"
-            ><i class="material-icons">menu</i></a
-          >
-        </ul>
-      </nav>
-    </header>
+    {% include 'partials/menu.html' %}
     <main class="content container">
       <form action="/login" method="POST">
         <div class="input-group">
