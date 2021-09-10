@@ -1,6 +1,6 @@
 const schedules = document.querySelectorAll("div.cancelSchedule");
 const modalOverlay = document.querySelector(".modal-overlay");
-const input = document.querySelector("input[type=hidden]");
+const input = document.querySelector("input[name='id']");
 const modalDesk = document.querySelector(".modal-content span.modalDesk");
 const modalRoom = document.querySelector(".modal-content span.modalRoom");
 const modalUnity = document.querySelector(".modal-content span.modalUnity");

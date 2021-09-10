@@ -1,9 +1,12 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-useless-escape */
 const { getNextDays, parseDate } = require("../../lib/utils");
 const City = require("../models/City");
 const Desk = require("../models/Desk");
 const Schedule = require("../models/Schedule");
+const User = require("../models/User");
 const roomServices = require("../services/roomServices");
+const { getSchedules } = require("../services/scheduleServices");
 
 module.exports = {
   async schedule(req, res, next) {
@@ -73,6 +76,38 @@ module.exports = {
         cityName,
         error: "Mesa indisponível!",
       });
+    next();
+  },
+  async delete(req, res, next) {
+    const { id } = req.body;
+    if (!id) {
+      const { name } = await User.find(req.session.userId);
+      const schedules = await getSchedules(req.session.userId);
+      return res.render("index", {
+        name,
+        schedules,
+        error: "Escolha um agendamento para cancelar!",
+      });
+    }
+    const schedule = await Schedule.find(id);
+    if (!schedule) {
+      const { name } = await User.find(req.session.userId);
+      const schedules = await getSchedules(req.session.userId);
+      return res.render("index", {
+        name,
+        schedules,
+        error: "Agendamento não encontrado!",
+      });
+    }
+    if (!req.session.id_admin && schedule.user_id != req.session.userId) {
+      const { name } = await User.find(req.session.userId);
+      const schedules = await getSchedules(req.session.userId);
+      return res.render("index", {
+        name,
+        schedules,
+        error: "Permissão negada para cancelar agendamento!",
+      });
+    }
     next();
   },
 };

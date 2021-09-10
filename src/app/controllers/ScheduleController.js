@@ -5,6 +5,7 @@ const User = require("../models/User");
 const City = require("../models/City");
 const roomServices = require("../services/roomServices");
 const Desk = require("../models/Desk");
+const { getSchedules } = require("../services/scheduleServices");
 
 module.exports = {
   async index(req, res) {
@@ -60,5 +61,26 @@ module.exports = {
         desk,
       });
     });
+  },
+  async delete(req, res) {
+    try {
+      await Schedule.delete(req.body.id);
+      const { name } = await User.find(req.session.userId);
+      const schedules = await getSchedules(req.session.userId);
+      return res.render("index", {
+        name,
+        schedules,
+        success: "Agendamento cancelado!",
+      });
+    } catch (err) {
+      console.error(err);
+      const { name } = await User.find(req.session.userId);
+      const schedules = await getSchedules(req.session.userId);
+      return res.render("index", {
+        name,
+        schedules,
+        error: "Permissão negada para cancelar agendamento!",
+      });
+    }
   },
 };

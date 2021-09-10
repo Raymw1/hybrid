@@ -30,13 +30,14 @@
       <p>Olá {{ name }}!</p>
       <small>Veja mais sobre ele aqui!</small>
       {% if schedules.length <= 0 %}
-      <p>Você ainda não possui nenhuma reserva ativa!</p>
+      <p>Você ainda não possui nenhuma reserva!</p>
       {% endif %}
       <div class="grid">
         <div class="success-schedule-grid">
           <div>Dia</div>
           <div>Sala</div>
           <div>Mesa</div>
+          <div>Unidade</div>
           <div></div>
         </div>
         {% if schedules.length > 0 %}
@@ -45,7 +46,8 @@
           <div>{{ schedule.day }}</div>
           <div>{{ schedule.room }}</div>
           <div>{{ schedule.desk }}</div>
-          <div data-id="{{ schedule.id }}" 
+          <div>{{ schedule.unity }}</div>
+          <div data-id="{{ schedule.scheduleId }}" 
           data-date="{{ schedule.date }}" 
           data-desk="{{ schedule.desk }}" 
           data-room="{{ schedule.room }}" 
@@ -54,6 +56,7 @@
         {% endfor %}
         {% else %}
         <div class="success-schedule-grid">
+          <div>-</div>
           <div>-</div>
           <div>-</div>
           <div>-</div>

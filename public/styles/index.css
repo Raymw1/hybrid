@@ -21,7 +21,7 @@ small {
 
 .success-schedule-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2.4rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 2.4rem;
 }
 
 .success-schedule-grid div {

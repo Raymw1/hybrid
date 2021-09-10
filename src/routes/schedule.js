@@ -20,4 +20,11 @@ routes.post(
   ScheduleController.post
 );
 
+routes.post(
+  "/schedule/delete",
+  onlyUsers,
+  scheduleValidator.delete,
+  ScheduleController.delete
+);
+
 module.exports = routes;
