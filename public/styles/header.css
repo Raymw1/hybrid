@@ -21,6 +21,12 @@ header nav ul {
   list-style-type: none;
 }
 
+header nav .links {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+
 header ul li a, header button {
   position: relative;
 }
@@ -76,9 +82,8 @@ header button {
 
   .header-overlay.active header.content {
     position: fixed;
+    width: 75%;
     top: 0;
-    left: 9.5rem;
-    width: initial;
     right: 0;
     bottom: 0;
     height: 100%;
@@ -91,8 +96,11 @@ header button {
 
   .header-overlay.active header .user-info {
     width: 100%;
-    display: initial;
+    display: grid;
+    grid-template-rows: 6.4rem auto;
+    gap: 1.6rem;
     color: #303033;
+    margin-bottom: 6.4rem;
   }
   
   .header-overlay.active header .user-info h3 {
@@ -108,17 +116,21 @@ header button {
   .header-overlay.active nav .links {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
+    gap: 1.6rem;
   }
 
   .header-overlay.active nav {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    height: 100%;
   }
 
   .header-overlay.active nav ul, .header-overlay.active form {
     width: initial;
+    margin-left: auto;
     flex-direction: column;
+    justify-content: space-between;
   }
 
   .header-overlay.active .hamburguer {

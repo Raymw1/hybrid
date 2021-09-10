@@ -2,8 +2,10 @@
   <header class="content">
     <div class="user-info">
       <div></div>
-      <h3>Bruno Magalhães</h3>
-      <p>BrunoMagalhaes@gmail.com</p>
+      <div class="user-description">
+        <h3>Bruno Magalhães</h3>
+        <p>BrunoMagalhaes@gmail.com</p>
+      </div>
     </div>
     <nav>
       <ul>
@@ -12,8 +14,10 @@
         <li><a href="/signup">Cadastar-se</a></li>
         {% else %}
         <div class="links">
-          <li><a href="/login">Login</a></li>
-          <li><a href="/signup">Cadastar-se</a></li>
+          <li><a href="/">Início</a></li>
+          <li><a href="/schedule">Agendamento</a></li>
+          <li><a href="#">Alterar dados</a></li>
+          <li><a href="/">Unidade preferida</a></li>
         </div>
         <form action="/logout" method="POST"><button type="submit">Sair</button></form>
         {% endif %}
