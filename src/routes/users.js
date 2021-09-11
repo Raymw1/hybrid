@@ -4,12 +4,12 @@ const SessionController = require("../app/controllers/SessionController");
 const UserController = require("../app/controllers/UserController");
 const sessionValidator = require("../app/validators/sessionValidator");
 const userValidator = require("../app/validators/userValidator");
-const { onlyUsers } = require("../app/middlewares/session");
+const { onlyUsers, isLogged } = require("../app/middlewares/session");
 
-routes.get("/signup", (req, res) => {
+routes.get("/signup", isLogged, (req, res) => {
   return res.render("signup");
 });
-routes.post("/signup", userValidator.post, UserController.post);
+routes.post("/signup", isLogged, userValidator.post, UserController.post);
 
 routes.post(
   "/forgot-password",
@@ -21,8 +21,13 @@ routes.get("/password-reset", SessionController.resetForm);
 routes.post("/password-reset", sessionValidator.reset, SessionController.reset);
 
 /* LOGIN */
-routes.get("/login", SessionController.loginForm); // tem validadores aqui nas rotas get e post de login
-routes.post("/login", sessionValidator.login, SessionController.login);
+routes.get("/login", isLogged, SessionController.loginForm); // tem validadores aqui nas rotas get e post de login
+routes.post(
+  "/login",
+  isLogged,
+  sessionValidator.login,
+  SessionController.login
+);
 routes.post("/logout", SessionController.logout);
 
 /* EDIT */

@@ -36,8 +36,28 @@ async function getRooms(city_id, schedule) {
   }
 }
 
+async function getRoomsAdmin() {
+  try {
+    let rooms = await Room.findAll();
+    const roomsPromise = rooms.map(async (room) => ({
+      room: room.room,
+    }));
+    await Promise.all(roomsPromise);
+    const sp = rooms.filter((room) => room.city_id === 2);
+    const sa = rooms.filter((room) => room.city_id === 1);
+    rooms = [
+      { name: "São Paulo", rooms: sp },
+      { name: "Santos", rooms: sa },
+    ];
+    return rooms;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   getRooms,
+  getRoomsAdmin,
   getDesks,
   getDeskInfo,
 };

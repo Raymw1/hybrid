@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/form.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+    <link rel="stylesheet" href="/styles/adminRooms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Salas</title>
+  </head>
+  <body>
+    {% include 'partials/menu.html' %}
+    <main class="content container">
+      <p>Olá {{ session.username }}!</p>
+      <small>Veja as salas atuais aqui!</small>
+      {% if rooms.length <= 0 %}
+      <p>Ainda não existem salas!</p>
+      {% endif %}
+      {% for city in cities %}
+      <div class="rooms">
+        <h2>{{ city.name }}</h2>
+        <div class="grid">
+          <div class="rooms-grid">
+            <div>Nº</div>
+            <div>Mesas</div>
+            <div></div>
+            <div></div>
+          </div>
+          {% if city.rooms.length > 0 %}
+          {% for room in city.rooms %}
+          <div class="rooms-grid">
+            <div>{{ room.room }}</div>
+            <div>{{ room.limits }}</div>
+            <div data-id="{{ room.room }}" class="deleteRoom"><i class="material-icons edit">edit</i></div>
+            <div data-id="{{ room.room }}" class="deleteRoom"><i class="material-icons delete">close</i></div>
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="rooms-grid">
+            <div>-</div>
+            <div>-</div>
+            <div></div>
+            <div></div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+      <a href="" class="button"></a>
+    </main>
+    <!-- <div class="modal-overlay">
+      <div class="modal">
+        <a class="close" href="#" onclick="Modal.close(event);"><i class="material-icons">close</i></a>
+        <div class="modal-content">
+          <p>Confirmar o cancelamento da <strong>mesa <span class="modalDesk"></span></strong> da <strong>sala <span class="modalRoom"></span></strong> para o dia <strong><span class="modalDate"></span></strong> na unidade de <strong><span class="modalUnity"></span></strong></p>
+          <button type="submit" form="deleteSchedule" onclick="Validate.allFields(event)" class="button">Confirmar</button>
+        </div>
+      </div>
+    </div> -->
+    <form action="/schedule/delete" id="deleteSchedule" method="post">
+      <input type="hidden" name="id">
+    </form>
+    {% include "partials/messagePopup.html" %}
+    <script src="/scripts/header.js"></script>
+    <script src="/scripts/modal.js"></script>
+    <script src="/scripts/mask.js"></script>
+    <script src="/scripts/validateForm.js"></script>
+    <script src="/scripts/cancelSchedule.js"></script>
+  </body>
+</html>

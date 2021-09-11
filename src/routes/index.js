@@ -3,6 +3,7 @@ const routes = express.Router();
 const users = require("./users");
 const cities = require("./cities");
 const schedule = require("./schedule");
+const rooms = require("./rooms");
 const { onlyUsers } = require("../app/middlewares/session");
 const User = require("../app/models/User");
 const { getSchedules } = require("../app/services/scheduleServices");
@@ -23,5 +24,6 @@ routes.get("/", onlyUsers, async (req, res) => {
 routes.use(users);
 routes.use(cities);
 routes.use(schedule);
+routes.use("/rooms", rooms);
 
 module.exports = routes;
