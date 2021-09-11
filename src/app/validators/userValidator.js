@@ -84,10 +84,7 @@ module.exports = {
       }
       return res.render("edit", { user, error: "Email inválido!" });
     }
-    const user = await User.findOne({
-      where: { email },
-      or: { phone: phone.replace(/\D/g, "") },
-    });
+    const user = await User.find(id);
     if (!user) {
       const user = await User.find(req.session.userId);
       if (user.phone.length > 13) {

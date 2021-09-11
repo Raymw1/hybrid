@@ -3,10 +3,6 @@ const User = require("../models/User");
 const { hash } = require("bcryptjs");
 
 module.exports = {
-  index() {},
-  createUser(req, res) {
-    return res.render("tem uma outra rota aqui dentro");
-  },
   async post(req, res) {
     try {
       let { name, email, password, phone, city, is_admin } = req.body;
@@ -22,9 +18,11 @@ module.exports = {
         is_admin,
       });
 
-      req.session.userId =
-        req.user && req.user.is_admin ? req.session.userId : userId;
-
+      if (req.user && !req.session.is_admin) {
+        req.session.userId = userId;
+        req.session.username = req.user.name;
+        req.session.useremail = req.user.email;
+      }
       // await mailer.sendMail({
       //   to: req.body.email,
       //   from: process.env, //tem mais alguma rota aqui?

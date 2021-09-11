@@ -11,6 +11,8 @@ module.exports = {
     try {
       req.session.userId = req.user.id;
       req.session.is_admin = req.user.is_admin;
+      req.session.username = req.user.name;
+      req.session.useremail = req.user.email;
       req.session.save((error) => {
         if (error) throw error;
         return res.redirect("/");

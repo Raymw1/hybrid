@@ -2,6 +2,7 @@
 const Menu = {
   header: document.querySelector(".header-overlay"),
   icon: document.querySelector("a.hamburguer"),
+  main: document.querySelector("body > main"),
   open() {
     this.header.classList.add("active");
     this.icon.setAttribute("onclick", "Menu.close();");
