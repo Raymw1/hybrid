@@ -47,4 +47,86 @@ module.exports = {
       });
     }
   },
+  async editForm(req, res) {
+    const user = await User.find(req.session.userId);
+    if (user.phone.length > 13) {
+      user.phone = user.phone.replace(
+        /(\d{3})(\d{2})(\d{5})(\d)/,
+        "+$1($2)$3-$4"
+      ); // '+999(99)99999-9999'
+    } else {
+      user.phone = user.phone.replace(
+        /(\d{2})(\d{2})(\d{5})(\d)/,
+        "+$1($2)$3-$4"
+      ); // '+99(99)99999-9999'
+    }
+    return res.render("edit", { user });
+  },
+  async put(req, res) {
+    try {
+      const { name, email, phone, id } = req.body;
+      await User.update(id, { name, email, phone });
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", {
+        user,
+        success: "Usuário atualizado!",
+      });
+    } catch (err) {
+      console.error(err);
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", {
+        user,
+        error: "Erro inesperado, tente novamente!",
+      });
+    }
+  },
+  async delete(req, res) {
+    try {
+      const { id } = req.body;
+      await User.delete(id);
+      req.session.destroy();
+      res.clearCookie("sid");
+      return res.redirect("/");
+    } catch (err) {
+      console.error(err);
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", {
+        user,
+        error: "Erro inesperado, tente novamente!",
+      });
+    }
+  },
 };

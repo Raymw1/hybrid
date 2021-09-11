@@ -11,7 +11,7 @@ desks.forEach((desk) => {
       });
       buttonSchedule.style.opacity = 1;
       buttonSchedule.style.cursor = "pointer";
-      buttonSchedule.setAttribute("onclick", "Modal.open()");
+      buttonSchedule.setAttribute("onclick", "Modal.open(event)");
       input.value = desk.dataset.id;
       modalDesk.innerText = desk.dataset.position;
       modalRoom.innerText = desk.dataset.roomid;

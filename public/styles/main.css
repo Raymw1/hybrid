@@ -33,7 +33,7 @@ button {
 
 .button {
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   color: #fff;
   font-weight: 500;
   text-transform: uppercase;
@@ -45,6 +45,10 @@ button {
   justify-content: center;
   cursor: pointer;
   transition: all 400ms;
+}
+
+.button img {
+  margin-left: .8rem;
 }
 
 /* .button:hover {

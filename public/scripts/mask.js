@@ -10,7 +10,7 @@ const Mask = {
       value = value.slice(0, -1);
     }
     if (value.length > 13) {
-      value = value.replace(/(\d{3})(\d{2})(\d{5})(\d)/, "+$1($2)$3-$4"); // '+9999999999999'
+      value = value.replace(/(\d{3})(\d{2})(\d{5})(\d)/, "+$1($2)$3-$4"); // '+999(99)99999-9999'
     } else {
       value = value.replace(/(\d{1})(\d)/, "+$1$2"); // '+9999999999999'
       value = value.replace(/(\d{2})(\d{2})(\d)/, "$1($2)$3"); // '+99(99)999999999'

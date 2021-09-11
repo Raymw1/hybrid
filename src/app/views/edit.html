@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/form.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+    <link rel="stylesheet" href="/styles/edit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Editar usuário</title>
+  </head>
+  <body>
+    {% include 'partials/menu.html' %}
+    <main class="content container">
+      <p>Alterar dados cadastrais</p>
+      <form action="/users?_method=PUT" method="POST">
+        <div class="input-group">
+          <label for="name">Nome completo</label>
+          <input type="text" id="name" name="name" value="{{ user.name }}" />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <div class="input">
+            <input type="email" id="email" onblur="Validate.isEmail(this)" name="email" value="{{ user.email }}" />
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="phone">Número de telefone</label>
+          <input type="text" id="phone" onkeydown="Mask.apply(this, 'formatPhone');" name="phone" value="{{ user.phone }}" />
+        </div>
+        <div class="other-links">
+          <p><a href="#">Trocar de senha</a></p>
+          <p><a href="#" onclick="Modal.open(event)">Excluir minha conta</a></p>
+        </div>
+        <input type="hidden" name="id" value="{{ user.id }}">
+        <button class="button" onclick="Validate.allFields(event)" type="submit">Confirmar<img src="/assets/images/next.svg" alt="Confirmar"></button>
+      </form>
+    </main>
+    <div class="modal-overlay">
+      <div class="modal">
+        <a class="close" href="#" onclick="Modal.close(event);"><i class="material-icons">close</i></a>
+        <div class="modal-content">
+          <form action="/users?_method=DELETE" method="post">
+            <h4>Você realmente quer apagar sua conta?</h4>
+              <input type="hidden" name="id" value="{{ user.id }}">
+              <button type="submit" class="button">Confirmar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% include "partials/messagePopup.html" %}
+    <script src="/scripts/header.js"></script>
+    <script src="/scripts/modal.js"></script>
+    <script src="/scripts/mask.js"></script>
+    <script src="/scripts/validateForm.js"></script>
+    <script src="/scripts/cancelSchedule.js"></script>
+  </body>
+</html>

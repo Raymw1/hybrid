@@ -12,7 +12,6 @@ module.exports = {
   async schedule(req, res, next) {
     const { day, cityId } = req.body;
     const days = getNextDays(6);
-    console.log(days);
     if (!day)
       return res.render("schedule", { days, error: "Insira um dia!", cityId });
     let dayLimit = false;

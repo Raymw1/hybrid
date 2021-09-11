@@ -43,7 +43,7 @@
     </main>
     <div class="modal-overlay">
       <div class="modal">
-        <a class="close" href="#" onclick="Modal.close();"><i class="material-icons">close</i></a>
+        <a class="close" href="#" onclick="Modal.close(event);"><i class="material-icons">close</i></a>
         <div class="modal-content">
           <p>Confirmar a reserva da <strong>mesa <span class="modalDesk"></span></strong> da <strong>sala <span class="modalRoom"></span></strong> para o dia <strong>{{ dateTime }}</strong> na unidade de <strong>{{ cityName }}</strong></p>
           <button type="submit" form="desksForm" onclick="Validate.allFields(event)" class="button">Confirmar</button>

@@ -1,0 +1,24 @@
+.container {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container > p {
+  font-weight: 600;
+  margin-bottom: 6rem;
+}
+
+.other-links {
+  gap: .8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.other-links p, .other-links a {
+  text-align: left;
+  color: #999;
+}
+
+.modal-content {
+  text-align: left;
+}
