@@ -2,6 +2,7 @@
 /* eslint-disable no-useless-escape */
 const { verifyForm } = require("./mainValidator");
 const User = require("../models/User");
+const { compare } = require("bcryptjs");
 
 module.exports = {
   async post(req, res, next) {
@@ -99,6 +100,100 @@ module.exports = {
         );
       }
       return res.render("edit", { user, error: "Usuário não encontrado!" });
+    }
+    next();
+  },
+  async changePassword(req, res, next) {
+    const emptyFields = verifyForm(req.body);
+    if (emptyFields) {
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", { user, error: "Preencha todos os campos!" });
+    }
+    const { id, password, newPassword, newPasswordRepeat } = req.body;
+    if (id != req.session.userId) {
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", {
+        user,
+        error: "Permissão negada!",
+      });
+    }
+    if (newPassword != newPasswordRepeat) {
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", {
+        user,
+        error: "Repetição de senha inválida!",
+      });
+    }
+    const user = await User.find(id);
+    if (!user) {
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", {
+        user,
+        error: "Usuário não encontrado!",
+      });
+    }
+    const passed = await compare(password, user.password);
+    if (!passed) {
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", {
+        user,
+        error: "Senha atual inválida!",
+      });
     }
     next();
   },

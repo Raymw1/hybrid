@@ -8,4 +8,14 @@ const Modal = {
     event.preventDefault();
     this.modalOverlay.classList.remove("active");
   },
+  openPassword(event) {
+    document.querySelector(".modal-overlay.password").classList.add("active");
+    event.preventDefault();
+  },
+  closePassword(event) {
+    document
+      .querySelector(".modal-overlay.password")
+      .classList.remove("active");
+    event.preventDefault();
+  },
 };

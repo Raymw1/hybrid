@@ -27,6 +27,12 @@ routes.post("/logout", SessionController.logout);
 
 /* EDIT */
 routes.get("/users/edit", onlyUsers, UserController.editForm); // tem validadores aqui nas rotas get e post de login
+routes.post(
+  "/users/change-password",
+  onlyUsers,
+  userValidator.changePassword,
+  UserController.changePassword
+); // tem validadores aqui nas rotas get e post de login
 routes.put("/users", onlyUsers, userValidator.put, UserController.put); // tem validadores aqui nas rotas get e post de login
 routes.delete("/users", onlyUsers, userValidator.delete, UserController.delete); // tem validadores aqui nas rotas get e post de login
 

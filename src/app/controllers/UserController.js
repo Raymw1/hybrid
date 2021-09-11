@@ -18,10 +18,10 @@ module.exports = {
         is_admin,
       });
 
-      if (req.user && !req.session.is_admin) {
+      if (!req.session || !req.session.is_admin) {
         req.session.userId = userId;
-        req.session.username = req.user.name;
-        req.session.useremail = req.user.email;
+        req.session.username = name;
+        req.session.useremail = email;
       }
       // await mailer.sendMail({
       //   to: req.body.email,
@@ -40,7 +40,7 @@ module.exports = {
       });
     } catch (error) {
       console.log(error);
-      return res.render("/signup", {
+      return res.render("signup", {
         error: "Erro inesperado, tente novamente!",
       });
     }
@@ -79,6 +79,47 @@ module.exports = {
       return res.render("edit", {
         user,
         success: "Usuário atualizado!",
+      });
+    } catch (err) {
+      console.error(err);
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", {
+        user,
+        error: "Erro inesperado, tente novamente!",
+      });
+    }
+  },
+  async changePassword(req, res) {
+    try {
+      const { id, newPassword } = req.body;
+      const password = await hash(newPassword, 8);
+      await User.update(id, { password });
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", {
+        user,
+        success: "Senha alterada!",
       });
     } catch (err) {
       console.error(err);

@@ -35,7 +35,7 @@
           <input type="text" id="phone" onkeydown="Mask.apply(this, 'formatPhone');" name="phone" value="{{ user.phone }}" />
         </div>
         <div class="other-links">
-          <p><a href="#">Trocar de senha</a></p>
+          <p><a href="#" onclick="Modal.openPassword(event)">Trocar de senha</a></p>
           <p><a href="#" onclick="Modal.open(event)">Excluir minha conta</a></p>
         </div>
         <input type="hidden" name="id" value="{{ user.id }}">
@@ -49,7 +49,31 @@
           <form action="/users?_method=DELETE" method="post">
             <h4>Você realmente quer apagar sua conta?</h4>
               <input type="hidden" name="id" value="{{ user.id }}">
-              <button type="submit" class="button">Confirmar</button>
+              <button type="submit" onclick="Validate.allFields(event)" class="button">Confirmar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal-overlay password">
+      <div class="modal">
+        <a class="close" href="#" onclick="Modal.closePassword(event);"><i class="material-icons">close</i></a>
+        <div class="modal-content">
+          <form action="/users/change-password" method="post">
+            <h4>Torque sua senha aqui</h4>
+              <div class="input-group">
+                <label for="password">Senha atual</label>
+                <input type="password" name="password">
+              </div>
+              <div class="input-group">
+                <label for="newPassword">Senha nova</label>
+                <input type="password" name="newPassword">
+              </div>
+              <div class="input-group">
+                <label for="newPasswordRepeat">Confirme sua senha nova</label>
+                <input type="password" name="newPasswordRepeat">
+              </div>
+              <input type="hidden" name="id" value="{{ user.id }}">
+              <button type="submit" onclick="Validate.allFields(event)" class="button">Trocar senha</button>
           </form>
         </div>
       </div>
