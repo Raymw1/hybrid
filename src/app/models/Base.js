@@ -12,7 +12,8 @@ function find(filters, table) {
       });
     });
   }
-  query += table === "schedules" ? `ORDER BY schedule ASC` : ``;
+  query += table === "schedules" ? ` ORDER BY schedule ASC` : ``;
+  query += table === "rooms" ? ` ORDER BY room ASC` : ``;
   return db.query(query);
 }
 

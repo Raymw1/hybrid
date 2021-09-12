@@ -23,6 +23,7 @@ body {
   min-height: 100vh;
   font-size: 16px;
   background-color: #fff;
+  letter-spacing: -0.02em;
   font-family: 'Metropolis', sans-serif;
 }
 

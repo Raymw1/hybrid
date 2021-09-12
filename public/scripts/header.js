@@ -4,13 +4,15 @@ const Menu = {
   icon: document.querySelector("a.hamburguer"),
   main: document.querySelector("body > main"),
   open() {
-    this.header.classList.add("active");
     this.icon.setAttribute("onclick", "Menu.close();");
+    this.main.style.marginTop = "6.4rem";
     this.icon.firstElementChild.innerText = "close";
+    this.header.classList.add("active");
   },
   close() {
-    this.header.classList.remove("active");
+    this.main.style.marginTop = "0";
     this.icon.setAttribute("onclick", "Menu.open();");
     this.icon.firstElementChild.innerText = "menu";
+    this.header.classList.remove("active");
   },
 };

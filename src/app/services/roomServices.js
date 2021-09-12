@@ -43,8 +43,8 @@ async function getRoomsAdmin() {
       room: room.room,
     }));
     await Promise.all(roomsPromise);
-    const sp = rooms.filter((room) => room.city_id === 2);
-    const sa = rooms.filter((room) => room.city_id === 1);
+    const sp = rooms.filter((room) => room.city_id === 1);
+    const sa = rooms.filter((room) => room.city_id === 2);
     rooms = [
       { name: "São Paulo", rooms: sp },
       { name: "Santos", rooms: sa },

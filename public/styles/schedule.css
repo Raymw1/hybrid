@@ -55,6 +55,10 @@ h3 {
   color: #303033;
 }
 
+.day.active div, .day.active p {
+  color: #fff;
+}
+
 .day .month {
   padding: 2.2rem 1.2rem 1.6rem;
   border-bottom: 2px solid #fff;
@@ -66,7 +70,8 @@ h3 {
 
 .day .weekday {
   margin-top: .8rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
 }
 
 .unities {

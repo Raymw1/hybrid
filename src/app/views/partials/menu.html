@@ -22,6 +22,9 @@
           <li><a href="/schedule">Agendamento</a></li>
           <li><a href="/users/edit">Alterar dados</a></li>
           <li><a href="/cities">Unidade preferida</a></li>
+          {% if session.is_admin %}
+          <li><a href="/rooms">Salas</a></li>
+          {% endif %}
         </div>
         <form action="/logout" method="POST"><button type="submit">Sair</button></form>
         {% endif %}
