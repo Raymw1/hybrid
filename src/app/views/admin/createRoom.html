@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/form.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/adminRooms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Criar sala</title>
+  </head>
+  <body>
+    {% include 'partials/menu.html' %}
+    <main class="content container">
+      <h2>Criar sala</h2>
+      <form action="/rooms" method="POST">
+        <div class="input-group">
+          <label for="city">Unidade preferida</label>
+          <select name="city" id="city">
+            <option value="1" {{ 'selected' if data.city == "1" }}>São Paulo</option>
+            <option value="2" {{ 'selected' if data.city == "2" }}>Santos</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="room">Número</label>
+          <input type="number" id="room" name="room" placeholder="Exemplo: 02" value="{{ data.room }}" />
+        </div>
+        <div class="input-group">
+          <label for="desks">Mesas</label>
+          <input type="number" id="desks" name="desks" placeholder="Exemplo: 6" value="{{ data.desks }}" />
+        </div>
+        <button class="button" onclick="Validate.allFields(event)" type="submit">Criar<img src="/assets/images/next.svg" alt=""></button>
+      </form>
+    </main>
+    {% include "partials/messagePopup.html" %}
+    <script src="/scripts/header.js"></script>
+    <script src="/scripts/validateForm.js"></script>
+  </body>
+</html>

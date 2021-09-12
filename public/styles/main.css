@@ -76,8 +76,7 @@ header.content {
 .container {
   display: flex;
   align-items: center;
-  
-  padding: auto 4.8rem;
+  padding: 2.4rem 0 4.8rem;
 }
 
 .other-links {

@@ -1,5 +1,4 @@
 .container {
-  margin-top: 5rem;
   max-width: 300px;
   display: flex;
   flex-direction: column;
@@ -46,4 +45,7 @@ small {
   gap: 1.5rem;
 }
 
-
+/* =========== CREATE ROOMS =========== */
+main > h2 {
+  margin-bottom: 1.6rem;
+}

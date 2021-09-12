@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+const Desk = require("../models/Desk");
+const Room = require("../models/Room");
 const User = require("../models/User");
 const { getRoomsAdmin } = require("../services/roomServices");
 const { getSchedules } = require("../services/scheduleServices");
@@ -12,15 +14,34 @@ module.exports = {
       console.error(err);
       const { name } = await User.find(req.session.userId);
       const schedules = await getSchedules(req.session.userId);
-      return res.render("index", { name, schedules });
+      return res.render("index", {
+        name,
+        schedules,
+        error: "Erro inesperado, tente novamente!",
+      });
     }
   },
-  async changeCity(req, res) {
-    const { cityId } = req.body;
-    await User.update(req.session.userId, { city_id: cityId });
-    return res.render("cities", {
-      cityId,
-      success: "Unidade atualizada com sucesso!",
-    });
+  async create(req, res) {
+    return res.render("admin/createRoom");
+  },
+  async post(req, res) {
+    try {
+      const { room, city, desks } = req.body;
+      const room_id = await Room.create({ room, city_id: city, limits: desks });
+      for (let i = 1; i <= desks; i++) {
+        await Desk.create({ room_id, position: i });
+      }
+      const cities = await getRoomsAdmin();
+      return res.render("admin/rooms", { cities });
+    } catch (err) {
+      console.error(err);
+      const { name } = await User.find(req.session.userId);
+      const schedules = await getSchedules(req.session.userId);
+      return res.render("index", {
+        name,
+        schedules,
+        error: "Erro inesperado, tente novamente!",
+      });
+    }
   },
 };

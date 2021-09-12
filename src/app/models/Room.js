@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const db = require("../../config/database");
 db.connect();
 const Base = require("./Base");
@@ -11,8 +12,10 @@ module.exports = {
       let keys = [];
       let values = [];
       Object.keys(fields).forEach((key) => {
-        keys.push(key);
-        values.push(`'${fields[key]}'`);
+        if (key !== "room") {
+          keys.push(key);
+          values.push(`'${fields[key]}'`);
+        }
       });
       keys = keys.join(",");
       values = values.join(",");
@@ -27,9 +30,15 @@ module.exports = {
       }
       const query = `INSERT INTO rooms (${keys}, room) VALUES (${values}, ${id}) RETURNING id, limits`;
       const results = await db.query(query);
-      return results.rows[0];
+      return results.rows[0].id;
     } catch (err) {
       console.log(err);
     }
+  },
+  async countDesks(city_id) {
+    const results = await db.query(
+      `SELECT count(id) FROM desks WHERE room_id IN (SELECT id FROM rooms WHERE city_id = ${city_id});`
+    );
+    return results.rows[0].count;
   },
 };
