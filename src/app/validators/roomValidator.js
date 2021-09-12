@@ -3,6 +3,7 @@
 const City = require("../models/City");
 const { verifyForm } = require("./mainValidator");
 const Room = require("../models/Room");
+const { getRoomsAdmin } = require("../services/roomServices");
 
 module.exports = {
   async post(req, res, next) {
@@ -39,6 +40,16 @@ module.exports = {
         error: "Número de mesas excedeu o limite!",
       });
     }
+    next();
+  },
+  async delete(req, res, next) {
+    const { id } = req.body;
+    const room = await Room.find(id);
+    if (!room)
+      return res.render("admin/rooms", {
+        cities: await getRoomsAdmin(),
+        error: "Esta sala não existe!",
+      });
     next();
   },
 };

@@ -44,4 +44,25 @@ module.exports = {
       });
     }
   },
+  async delete(req, res) {
+    try {
+      const { id } = req.body;
+      await Desk.deleteIf({ where: { room_id: id } });
+      await Room.delete(id);
+      const cities = await getRoomsAdmin();
+      return res.render("admin/rooms", {
+        cities,
+        success: "Sala removida com sucesso!",
+      });
+    } catch (err) {
+      console.error(err);
+      const { name } = await User.find(req.session.userId);
+      const schedules = await getSchedules(req.session.userId);
+      return res.render("index", {
+        name,
+        schedules,
+        error: "Erro inesperado, tente novamente!",
+      });
+    }
+  },
 };
