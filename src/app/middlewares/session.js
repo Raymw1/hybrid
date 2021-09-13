@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 const User = require("../models/User");
 const { getSchedules } = require("../services/scheduleServices");
 
@@ -40,9 +41,30 @@ async function checkIfIsAdminToCreate(req, res, next) {
   if (id) {
     const user = await User.find(id);
     if (!user.is_admin) {
-      return res.render("edit", {
-        user: user,
-        error: "Você não tem permissão para entrar nesta área!",
+      const { name } = await User.find(req.session.userId);
+      const schedules = await getSchedules(req.session.userId);
+      return res.render("index", {
+        name,
+        schedules,
+        error: "Permissão negada!",
+      });
+    }
+    req.user = user;
+  }
+  next();
+}
+
+async function checkIfIsOwnOrAdmin(req, res, next) {
+  const id = req.session.userId;
+  if (id) {
+    const user = await User.find(id);
+    if (!user.is_admin && id != (req.params.id || req.body.id)) {
+      const { name } = await User.find(req.session.userId);
+      const schedules = await getSchedules(req.session.userId);
+      return res.render("index", {
+        name,
+        schedules,
+        error: "Permissão negada!",
       });
     }
     req.user = user;
@@ -55,4 +77,5 @@ module.exports = {
   isLogged,
   onlyAdmins,
   checkIfIsAdminToCreate,
+  checkIfIsOwnOrAdmin,
 };

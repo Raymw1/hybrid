@@ -34,10 +34,17 @@
           <label for="phone">Número de telefone</label>
           <input type="text" id="phone" onkeydown="Mask.apply(this, 'formatPhone');" name="phone" value="{{ user.phone }}" />
         </div>
+        {% if session.userId == user.id %}
         <div class="other-links">
           <p><a href="#" onclick="Modal.openPassword(event)">Trocar de senha</a></p>
           <p><a href="#" onclick="Modal.open(event)">Excluir minha conta</a></p>
         </div>
+        {% endif %}
+        {% if session.is_admin %}
+        <div class="input-group check">
+          <input type="checkbox" name="is_admin" {{ 'checked' if user.is_admin }}>Administrador
+        </div>
+        {% endif %}
         <input type="hidden" name="id" value="{{ user.id }}">
         <button class="button" onclick="Validate.allFields(event)" type="submit">Confirmar<img src="/assets/images/next.svg" alt="Confirmar"></button>
       </form>

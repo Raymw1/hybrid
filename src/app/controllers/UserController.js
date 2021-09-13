@@ -3,6 +3,13 @@ const User = require("../models/User");
 const { hash } = require("bcryptjs");
 
 module.exports = {
+  async index(req, res) {
+    const users = await User.findAll();
+    return res.render("admin/users", { users });
+  },
+  async create(req, res) {
+    return res.render("admin/createUser");
+  },
   async post(req, res) {
     try {
       let { name, email, password, phone, city, is_admin } = req.body;
@@ -18,7 +25,7 @@ module.exports = {
         is_admin,
       });
 
-      if (!req.session || !req.session.is_admin) {
+      if (!req.session || (req.session && !req.session.is_admin)) {
         req.session.userId = userId;
         req.session.username = name;
         req.session.useremail = email;
@@ -33,8 +40,8 @@ module.exports = {
 
       req.session.save((error) => {
         if (error) throw error;
-        if (req.user && req.user.is_admin) {
-          return res.redirect(`/`);
+        if (req.session && req.session.is_admin) {
+          return res.redirect(`/users`);
         }
         return res.redirect("/");
       });
@@ -46,7 +53,7 @@ module.exports = {
     }
   },
   async editForm(req, res) {
-    const user = await User.find(req.session.userId);
+    const user = await User.find(req.params.id);
     if (user.phone.length > 13) {
       user.phone = user.phone.replace(
         /(\d{3})(\d{2})(\d{5})(\d)/,
@@ -62,9 +69,11 @@ module.exports = {
   },
   async put(req, res) {
     try {
-      const { name, email, phone, id } = req.body;
-      await User.update(id, { name, email, phone });
-      const user = await User.find(req.session.userId);
+      let { name, email, phone, id, is_admin } = req.body;
+      is_admin = !!is_admin;
+      phone = phone.replace(/\D/g, ""); // Get only digits/numbers
+      await User.update(id, { name, email, phone, is_admin });
+      const user = await User.find(id);
       if (user.phone.length > 13) {
         user.phone = user.phone.replace(
           /(\d{3})(\d{2})(\d{5})(\d)/,
@@ -145,9 +154,17 @@ module.exports = {
     try {
       const { id } = req.body;
       await User.delete(id);
-      req.session.destroy();
-      res.clearCookie("sid");
-      return res.redirect("/");
+      if (!req.session.is_admin) {
+        req.session.destroy();
+        res.clearCookie("sid");
+        return res.redirect("/");
+      } else {
+        const users = await User.findAll();
+        return res.render("admin/users", {
+          users,
+          success: "Usuário removido!",
+        });
+      }
     } catch (err) {
       console.error(err);
       const user = await User.find(req.session.userId);

@@ -39,6 +39,17 @@ input:focus {
   right: 1.3rem;
 }
 
+.input-group.check {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+
+.input-group.check input {
+  width: initial;
+  margin: 0;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

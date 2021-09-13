@@ -4,7 +4,12 @@ const SessionController = require("../app/controllers/SessionController");
 const UserController = require("../app/controllers/UserController");
 const sessionValidator = require("../app/validators/sessionValidator");
 const userValidator = require("../app/validators/userValidator");
-const { onlyUsers, isLogged } = require("../app/middlewares/session");
+const {
+  onlyUsers,
+  isLogged,
+  checkIfIsOwnOrAdmin,
+  onlyAdmins,
+} = require("../app/middlewares/session");
 
 routes.get("/signup", isLogged, (req, res) => {
   return res.render("signup");
@@ -21,7 +26,7 @@ routes.get("/password-reset", SessionController.resetForm);
 routes.post("/password-reset", sessionValidator.reset, SessionController.reset);
 
 /* LOGIN */
-routes.get("/login", isLogged, SessionController.loginForm); // tem validadores aqui nas rotas get e post de login
+routes.get("/login", isLogged, SessionController.loginForm);
 routes.post(
   "/login",
   isLogged,
@@ -30,15 +35,40 @@ routes.post(
 );
 routes.post("/logout", SessionController.logout);
 
-/* EDIT */
-routes.get("/users/edit", onlyUsers, UserController.editForm); // tem validadores aqui nas rotas get e post de login
+routes.get("/users", onlyAdmins, UserController.index);
+
+routes.get("/users/create", onlyAdmins, UserController.create);
+
+routes.post("/users", onlyAdmins, userValidator.create, UserController.post);
+
+routes.get(
+  "/users/:id/edit",
+  onlyUsers,
+  checkIfIsOwnOrAdmin,
+  UserController.editForm
+);
+
 routes.post(
   "/users/change-password",
   onlyUsers,
   userValidator.changePassword,
   UserController.changePassword
-); // tem validadores aqui nas rotas get e post de login
-routes.put("/users", onlyUsers, userValidator.put, UserController.put); // tem validadores aqui nas rotas get e post de login
-routes.delete("/users", onlyUsers, userValidator.delete, UserController.delete); // tem validadores aqui nas rotas get e post de login
+);
+
+routes.put(
+  "/users",
+  onlyUsers,
+  checkIfIsOwnOrAdmin,
+  userValidator.put,
+  UserController.put
+);
+
+routes.delete(
+  "/users",
+  onlyUsers,
+  checkIfIsOwnOrAdmin,
+  userValidator.delete,
+  UserController.delete
+);
 
 module.exports = routes;

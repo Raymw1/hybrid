@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/form.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+    <link rel="stylesheet" href="/styles/users.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Criar usuário</title>
+  </head>
+  <body>
+    {% include 'partials/menu.html' %}
+    <main class="content container create-user">
+      <h2>Criar usuário</h2>
+      <form action="/users" method="POST">
+        <div class="input-group">
+          <label for="name">Nome completo</label>
+          <input type="text" id="name" name="name" value="{{ data.name }}" />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <div class="input">
+            <input type="email" id="email" onblur="Validate.isEmail(this)" name="email" value="{{ data.email }}" />
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="phone">Número de telefone</label>
+          <input type="text" id="phone" onkeydown="Mask.apply(this, 'formatPhone');" name="phone" value="{{ data.phone }}" />
+        </div>
+        <div class="input-group">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" />
+        </div>
+        <div class="input-group">
+          <label for="city">Unidade preferida</label>
+          <select name="city" id="city">
+            <option value="1" {{ 'selected' if data.city == "1" }}>São Paulo</option>
+            <option value="2" {{ 'selected' if data.city == "2" }}>Santos</option>
+          </select>
+        </div>
+        <div class="input-group check">
+          <input type="checkbox" name="is_admin" {{ 'checked' if user.is_admin }}>Administrador
+        </div>
+        <button class="button" onclick="Validate.allFields(event)" type="submit">Cadastrar-se</button>
+      </form>
+    </main>
+    {% include "partials/messagePopup.html" %}
+    <script src="/scripts/header.js"></script>
+    <script src="/scripts/modal.js"></script>
+    <script src="/scripts/validateForm.js"></script>
+    <script src="/scripts/mask.js"></script>
+  </body>
+</html>

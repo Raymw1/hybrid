@@ -27,6 +27,10 @@ header nav .links {
   align-items: center;
 }
 
+header ul li a.active {
+  font-weight: bold;
+}
+
 header ul li a, header button {
   position: relative;
 }

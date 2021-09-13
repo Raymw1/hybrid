@@ -1,4 +1,19 @@
 // eslint-disable-next-line no-unused-vars
+const currentPage = location.pathname;
+const menuItems = document.querySelectorAll("header nav ul li a");
+
+menuItems.forEach((menuItem) => {
+  if (
+    (currentPage.includes(menuItem.getAttribute("href")) &&
+      menuItem.getAttribute("href") !== "/") ||
+    currentPage === menuItem.getAttribute("href")
+  ) {
+    menuItem.classList.add("active");
+  } else {
+    menuItem.classList.remove("active");
+  }
+});
+
 const Menu = {
   header: document.querySelector(".header-overlay"),
   icon: document.querySelector("a.hamburguer"),

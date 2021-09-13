@@ -31,14 +31,12 @@
             <div>Nº</div>
             <div>Mesas</div>
             <div></div>
-            <div></div>
           </div>
           {% if city.rooms.length > 0 %}
           {% for room in city.rooms %}
           <div class="rooms-grid">
             <div>{{ room.room }}</div>
             <div>{{ room.limits }}</div>
-            <div data-room="{{ room.room }}" data-id="{{ room.id }}" data-unity="{{ city.name }}"><i class="material-icons edit">edit</i></div>
             <div data-room="{{ room.room }}" data-id="{{ room.id }}" data-unity="{{ city.name }}" class="deleteRoom"><i class="material-icons delete">close</i></div>
           </div>
           {% endfor %}
@@ -46,7 +44,6 @@
           <div class="rooms-grid">
             <div>-</div>
             <div>-</div>
-            <div></div>
             <div></div>
           </div>
           {% endif %}

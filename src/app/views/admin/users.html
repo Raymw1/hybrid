@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/users.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Usuários</title>
+  </head>
+  <body>
+    {% include 'partials/menu.html' %}
+    <main class="content container">
+      <p>Olá {{ session.username }}!</p>
+      <small>Veja os usuários atuais aqui!</small>
+      <div class="users">
+      {% for user in users %}
+        <div class="user">
+          <div>{{ user.name }}</div>
+          <small>{{ user.email }}</small>
+          <div class="user-actions">
+            <a href="/users/{{ user.id }}/edit">Editar</a>
+            {% if not user.is_admin %}
+            <form action="/users?_method=DELETE" method="POST">
+              <input type="hidden" name="id" value="{{ user.id }}">
+              <button type="submit">Remover</button>
+            </form>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+      <a href="/users/create" class="button">Criar Usuário<img src="/assets/images/next.svg" alt=""></a>
+    </main>
+    {% include "partials/messagePopup.html" %}
+    <script src="/scripts/header.js"></script>
+    <script src="/scripts/modal.js"></script>
+    <script src="/scripts/deleteRoom.js"></script>
+  </body>
+</html>
