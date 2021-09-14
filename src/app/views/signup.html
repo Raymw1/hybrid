@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/styles/form.css">
     <link rel="stylesheet" href="/styles/header.css">
     <link rel="stylesheet" href="/styles/modal.css">
+    <link rel="stylesheet" href="/styles/signup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
@@ -17,6 +18,8 @@
   <body>
     {% include 'partials/menu.html' %}
     <main class="content container">
+      <h4>Crie sua conta</h4>
+      <small>Já possui uma conta? <a href="/login">Entre aqui</a></small>
       <form action="/signup" method="POST">
         <div class="input-group">
           <label for="name">Nome completo</label>
@@ -34,7 +37,11 @@
         </div>
         <div class="input-group">
           <label for="password">Senha</label>
-          <input type="password" id="password" name="password" />
+          <div class="input password">
+            <input type="password" id="password" name="password" />
+            <img class="passwordButton" src="/assets/images/password.svg" alt="">
+          </div>
+          
         </div>
         <div class="input-group">
           <label for="city">Unidade preferida</label>
@@ -44,10 +51,7 @@
           </select>
         </div>
         <button class="button" onclick="Validate.allFields(event)" type="submit">Cadastrar-se</button>
-        <div class="other-links">
-          <p>Já possui conta? <a href="/login">Fazer login</a></p>
-          <p>Esqueceu sua senha? <a href="#" onclick="Modal.open(event)">Recuperar</a></p>
-        </div>
+        
       </form>
     </main>
     <div class="modal-overlay">
@@ -73,5 +77,6 @@
     <script src="/scripts/modal.js"></script>
     <script src="/scripts/validateForm.js"></script>
     <script src="/scripts/mask.js"></script>
+    <script src="/scripts/showPassword.js"></script>
   </body>
 </html>
