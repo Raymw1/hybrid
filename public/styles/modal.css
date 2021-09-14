@@ -61,7 +61,7 @@
 
 .modal-content form {
   margin-top: 1.2rem;
-  max-width: 300px;
+  /* max-width: 300px; */
 }
 
 @media (max-width: 450px) {

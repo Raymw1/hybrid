@@ -23,25 +23,25 @@
       <form action="/signup" method="POST">
         <div class="input-group">
           <label for="name">Nome completo</label>
-          <input type="text" id="name" name="name" value="{{ data.name }}" />
+          <input type="text" id="name" name="name" value="{{ data.name }}" placeholder="Nome completo" />
         </div>
         <div class="input-group">
           <label for="email">Email</label>
-          <div class="input">
-            <input type="email" id="email" onblur="Validate.isEmail(this)" name="email" value="{{ data.email }}" />
+          <div class="input email">
+            <input type="email" id="email" onblur="Validate.isEmail(this)" name="email" value="{{ data.email }}" placeholder="Insira seu email"/>
+            <img src="/assets/images/email.svg" alt="">
           </div>
         </div>
         <div class="input-group">
           <label for="phone">Número de telefone</label>
-          <input type="text" id="phone" onkeydown="Mask.apply(this, 'formatPhone');" name="phone" value="{{ data.phone }}" />
+          <input type="text" id="phone" onkeydown="Mask.apply(this, 'formatPhone');" name="phone" value="{{ data.phone }}" placeholder="Código | DDD | Número"/>
         </div>
         <div class="input-group">
           <label for="password">Senha</label>
           <div class="input password">
-            <input type="password" id="password" name="password" />
+            <input type="password" id="password" name="password" placeholder="Insira sua senha"/>
             <img class="passwordButton" src="/assets/images/password.svg" alt="">
           </div>
-          
         </div>
         <div class="input-group">
           <label for="city">Unidade preferida</label>
@@ -50,28 +50,10 @@
             <option value="2" {{ 'selected' if data.city == "2" }}>Santos</option>
           </select>
         </div>
-        <button class="button" onclick="Validate.allFields(event)" type="submit">Cadastrar-se</button>
-        
+        <button class="button" onclick="Validate.allFields(event)" type="submit">Cadastrar-se<img src="/assets/images/next.svg" alt=""></button>
       </form>
     </main>
-    <div class="modal-overlay">
-      <div class="modal">
-        <a class="close" href="#" onclick="Modal.close(event);"><i class="material-icons">close</i></a>
-        <div class="modal-content">
-          <h3>Esqueceu a senha?</h3>
-          <p>Iremos enviar um email, para você criar outra</p>
-          <form action="/forgot-password" method="post">
-            <div class="input-group">
-              <label for="email">Insira seu email:</label>
-              <div class="input">
-                <input type="email" name="email" onblur="Validate.isEmail(this)" placeholder="email@email.com" required>
-              </div>
-            </div>
-            <button type="submit" onclick="Validate.allFields(event)" class="button">Recuperar senha</button>
-          </form>
-        </div>
-      </div>
-    </div>
+    {% include 'partials/modalPassword.html' %}
     {% include "partials/messagePopup.html" %}
     <script src="/scripts/header.js"></script>
     <script src="/scripts/modal.js"></script>

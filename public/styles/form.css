@@ -9,6 +9,12 @@ form {
   width: 100%;
 }
 
+.label {
+   display: flex;
+   align-items: baseline;
+   justify-content: space-between;
+}
+
 input,
 select {
   margin-top: 0.4rem;
@@ -37,6 +43,12 @@ input:focus {
   width: 1.6rem;
   top: 1.3rem;
   right: 1.3rem;
+}
+
+.input.password img {
+  top: 1.5rem;
+  width: 1.8rem;
+  cursor: pointer;
 }
 
 .input-group.check {

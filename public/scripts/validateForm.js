@@ -5,7 +5,9 @@ const Validate = {
   isEmail(input) {
     let img = document.querySelector(".input img");
     if (img)
-      document.querySelector(".input input").parentElement.removeChild(img);
+      document
+        .querySelector(".input.email input")
+        .parentElement.removeChild(img);
     // eslint-disable-next-line no-undef
     img = new Image();
     const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

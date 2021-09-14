@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/styles/form.css" />
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/modal.css" />
+    <link rel="stylesheet" href="/styles/signup.css" />
     <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,30 +22,32 @@
       <form action="/login" method="POST">
         <div class="input-group">
           <label for="email">Email:</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value="{{ data.email }}"
-            onblur="Validate.isEmail(this)"
-          />
+          <div class="input email">
+            <input type="email" id="email" onblur="Validate.isEmail(this)" name="email" value="{{ data.email }}" placeholder="Insira seu email"/>
+            <img src="/assets/images/email.svg" alt="">
+          </div>
         </div>
         <div class="input-group">
-          <label for="password">Senha:</label>
-          <input type="password" id="password" name="password" />
+          <div class="label">
+            <label for="password">Senha:</label>
+            <a href="#" onclick="Modal.openPassword(event)"><small>Esqueceu?</small></a>
+          </div>
+          <div class="input password">
+            <input type="password" id="password" name="password" placeholder="Insira sua senha"/>
+            <img class="passwordButton" src="/assets/images/password.svg" alt="">
+          </div>
         </div>
-        <button type="submit" onclick="Validate.allFields(event)">Login</button>
+        <button type="submit" class="button" onclick="Validate.allFields(event)">Entrar<img src="/assets/images/next.svg" alt=""></button>
         <div class="other-links">
-          <p>Já possui conta? <a href="/login">Fazer login</a></p>
-          <p>
-            Esqueceu sua senha?
-            <a href="#" onclick="ModalPassword.open()">Recuperar</a>
-          </p>
+          <small>Já possui conta?<br><a href="/login">Fazer login</a></small>
         </div>
       </form>
     </main>
+    {% include 'partials/modalPassword.html' %}
     {% include "partials/messagePopup.html" %}
     <script src="/scripts/header.js"></script>
+    <script src="/scripts/modal.js"></script>
     <script src="/scripts/validateForm.js"></script>
+    <script src="/scripts/showPassword.js"></script>
   </body>
 </html>

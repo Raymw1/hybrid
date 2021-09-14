@@ -18,15 +18,17 @@ const Menu = {
   header: document.querySelector(".header-overlay"),
   icon: document.querySelector("a.hamburguer"),
   main: document.querySelector("body > main"),
-  open() {
-    this.icon.setAttribute("onclick", "Menu.close();");
+  open(event) {
+    event.preventDefault();
+    this.icon.setAttribute("onclick", "Menu.close(event);");
     this.main.style.marginTop = "6.4rem";
     this.icon.firstElementChild.innerText = "close";
     this.header.classList.add("active");
   },
-  close() {
+  close(event) {
+    event.preventDefault();
     this.main.style.marginTop = "0";
-    this.icon.setAttribute("onclick", "Menu.open();");
+    this.icon.setAttribute("onclick", "Menu.open(event);");
     this.icon.firstElementChild.innerText = "menu";
     this.header.classList.remove("active");
   },
