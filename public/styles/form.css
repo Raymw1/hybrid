@@ -57,8 +57,25 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-@media (max-width: 360px) {
-  .container {
-    max-width: 250px;
-  }
+.input-box {
+  width: 100%;
+  background-color: #C8C8C8;
+  padding: 2.4rem 3.2rem;
+  border-radius: .8rem;
+  position: relative;
+}
+
+.input-box.active {
+  color: #fff;
+  background-color: var(--primary-color);
+}
+
+.input-box::before {
+  content: "";
+  position: absolute;
+  top: .8rem;
+  left: 0;
+  height: 75%;
+  width: 2px;
+  background-color: var(--primary-color);
 }

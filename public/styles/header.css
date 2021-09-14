@@ -1,3 +1,14 @@
+.header-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-overlay a img {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
 header {
   display: flex;
   justify-content: flex-end;
@@ -65,7 +76,7 @@ header button {
   display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   header .hamburguer {
     display: initial;
   }
@@ -84,7 +95,11 @@ header button {
     z-index: 1;
   }
 
-  .header-overlay.active header.content {
+  .header-overlay.active > a {
+    display: none;
+  }
+
+  .header-overlay.active header {
     position: fixed;
     width: 75%;
     top: 0;

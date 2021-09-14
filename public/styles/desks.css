@@ -5,48 +5,72 @@
   align-items: initial;
 }
 
-.rooms {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.8rem;
-  width: 100%;
-  margin: 1.8rem 0;
+small, small span {
+  font-size: 1.2rem;
+  color: #8b8b8b;
 }
 
-.room {
+.rooms {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
   width: 100%;
-  padding: 1.8rem;
-  min-height: 12.5rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  background-color: #FEBBA2;
-  border-radius: .8rem;
-  margin-bottom: .8rem;
+  margin: 1.8rem 0;
 }
 
 .room-container p {
   text-align: center;
 }
 
+.room .desks {
+  display: none;
+}
+
+.desks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5.8rem;
+  margin-bottom: 3.2rem;
+}
+
 .desk {
   border-radius: 100%;
-  background-color: #3CD242;
-  width: 2.5rem;
-  height: 2.5rem;
+  background-color: #3cd242;
+  width: 1.6rem;
+  height: 1.6rem;
   align-self: center;
   justify-self: center;
   cursor: pointer;
+  transition: all 400ms;
 }
 
 .desk.occuped {
-  background-color: #D23C3C;
+  background-color: #d23c3c4d;
   cursor: not-allowed;
 }
 
 .desk.active {
-  border: 3px solid #5C5C5C;
+  background: #4b4fa1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.desks-info {
+  margin: .8rem 0 3.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem 1.6rem;
+}
+
+.desks-info > div {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+
+.desks-info > div > .desk {
+  width: 1rem;
+  height: 1rem;
+}
 
 form {
   width: 100%;

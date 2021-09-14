@@ -39,12 +39,13 @@ button {
   font-weight: 500;
   text-transform: uppercase;
   margin: 0 auto;
-  padding: 1.2rem 2.4rem;
+  padding: 1rem 0;
   border-radius: .8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: 0px 3px 3px rgba(48, 48, 51, 0.15);
   transition: all 400ms;
 }
 

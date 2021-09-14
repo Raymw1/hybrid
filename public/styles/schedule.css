@@ -1,6 +1,7 @@
 .container {
   max-width: 300px;
   align-items: initial;
+  flex-direction: column;
 }
 
 h3 {
@@ -78,4 +79,14 @@ h3 {
   margin: 0;
   border-top: 1px solid #f1f1f1;
   padding: 1.8rem 0;
+}
+
+.unities p {
+  margin-bottom: 3.2rem;
+}
+
+.unities-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
 }

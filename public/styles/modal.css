@@ -37,7 +37,7 @@
   max-width: 50rem;
   background-color: #fff;
   padding: 4.6rem 3.2rem;
-  text-align: center;
+  /* text-align: center; */
   border-radius: .8rem;
   position: relative;
 }
@@ -51,7 +51,7 @@
 .modal-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .modal-content p {

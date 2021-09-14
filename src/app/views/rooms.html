@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css" />
     <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/form.css" />
     <link rel="stylesheet" href="/styles/desks.css" />
     <link rel="stylesheet" href="/styles/modal.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,33 +21,47 @@
   <body>
     {% include 'partials/menu.html' %}
     <main class="content container">
-      <h1>Agendamento</h1>
-      <h2>{{ dateTime }}</h2>
-      <h2>{{ cityName }}</h2>
+      <h4>{{ cityName }}</h4>
+      <small>{{ 'Pç Dos Expedicionários, 19 - 2º andar - Gonzaga' if cityName == 'Santos' }}</small>
       <div class="rooms">
         {% for room in rooms %}
         <div class="room-container">
-          <div class="room">
-            {% for desk in room.desks %}
-            <div class="desk{{ ' occuped' if desk.occuped }}" data-id="{{ desk.id }}" data-position="{{ desk.position }}" data-roomid="{{ room.roomId }}"></div>
-            {% endfor %}
+          <div class="room" data-id="{{ room.roomId }}">
+            <div class="input-box">Sala {{ room.roomId }}</div>
+            <div class="desks">
+              {% for desk in room.desks %}
+              <div class="desk{{ ' occuped' if desk.occuped }}" data-id="{{ desk.id }}" data-position="{{ desk.position }}" data-roomid="{{ room.roomId }}"></div>
+              {% endfor %}
+            </div>
           </div>
-          <p>Sala {{ room.roomId }}</p>
         </div>
         {% endfor %}
       </div>
       <form action="/desks" id="desksForm" method="POST">
         <input type="hidden" name="desk" value="{{ desk }}" />
         <input type="hidden" name="day" value="{{ day }}" />
-        <a class="button" href="#">Agendar</a>
       </form>
     </main>
     <div class="modal-overlay">
       <div class="modal">
         <a class="close" href="#" onclick="Modal.close(event);"><i class="material-icons">close</i></a>
         <div class="modal-content">
-          <p>Confirmar a reserva da <strong>mesa <span class="modalDesk"></span></strong> da <strong>sala <span class="modalRoom"></span></strong> para o dia <strong>{{ dateTime }}</strong> na unidade de <strong>{{ cityName }}</strong></p>
-          <button type="submit" form="desksForm" onclick="Validate.allFields(event)" class="button">Confirmar</button>
+          <h4>{{ cityName }}, {{ dateTime }}</h4>
+          <small>Sala <span class="modalRoom"></span></small>
+          <div class="desks-info">
+            <div>
+              <div class="desk active"></div>
+              <small>Selecionado</small>
+            </div>
+            <div>
+              <div class="desk"></div>
+              <small>Disponível</small>
+            </div>
+            <div>
+              <div class="desk occuped"></div>
+              <small>Ocupado</small>
+            </div>
+          </div>
         </div>
       </div>
     </div>
