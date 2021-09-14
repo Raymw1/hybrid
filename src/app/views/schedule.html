@@ -41,7 +41,7 @@
       <form action="/schedule" method="POST">
         <input type="hidden" name="day" value="{{ day }}" />
         <input type="hidden" name="cityId" value="{{ cityId }}" />
-        <button type="submit" onclick="Validate.allFields(event)" class="button">Continuar</button>
+        <button type="submit" onclick="Validate.allFields(event)" class="button">Continuar<img src="/assets/images/next.svg" alt=""></button>
       </form>
     </main>
     {% include "partials/messagePopup.html" %}
