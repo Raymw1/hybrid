@@ -25,13 +25,24 @@ select {
   font-size: 16px;
   color: #333;
   outline: none;
+  position: relative;
   border-radius: 0.8rem;
   border: 1px solid #c8c8c8;
   transition: border 100ms;
 }
 
-input:focus {
-  border: 2px solid var(--primary-color);
+.input-group {
+  position: relative;
+}
+
+.input-group:focus-within::after {
+  content: "";
+  width: calc(100% - 3.2rem);
+  height: 2px;
+  background: var(--primary-color);
+  position: absolute;
+  left: 1.6rem;
+  bottom: 0px;
 }
 
 .input {
