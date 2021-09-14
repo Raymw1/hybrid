@@ -27,7 +27,11 @@ module.exports = {
   async post(req, res) {
     try {
       const { room, city, desks } = req.body;
-      const room_id = await Room.create({ room, city_id: city, limits: desks });
+      const { id: room_id } = await Room.create({
+        room,
+        city_id: city,
+        limits: desks,
+      });
       for (let i = 1; i <= desks; i++) {
         await Desk.create({ room_id, position: i });
       }

@@ -1,4 +1,5 @@
 const db = require("./database");
+const { hash } = require("bcryptjs");
 // const { createDesks } = require("./seed");
 db.connect();
 
@@ -105,8 +106,15 @@ async function initDb() {
 
   await db.query(`INSERT INTO cities (city) VALUES ('São Paulo')`);
   await db.query(`INSERT INTO cities (city) VALUES ('Santos')`);
-
-  console.log("Database and tables created 🚀");
+  await db.query(`
+    INSERT INTO users (name, email, phone, password, city_id, is_admin) 
+    VALUES ('admin', 'admin@admin.com', '5599999999999', 
+    '${await hash("admin00", 8)}', 1, true)`);
+  console.log("🚀 -------- ADMIN -------- 🚀");
+  console.log("🚀 email: admin@admin.com  🚀");
+  console.log("🚀     senha: admin00      🚀");
+  console.log("🚀 --------- // ---------  🚀");
+  console.log("\nDatabase and tables created 🚀");
   process.exit();
 }
 

@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 const db = require("../../config/database");
-db.connect();
+// db.connect();
 const Base = require("./Base");
 
 Base.init({ table: "rooms" });
@@ -30,7 +30,7 @@ module.exports = {
       }
       const query = `INSERT INTO rooms (${keys}, room) VALUES (${values}, ${id}) RETURNING id, limits`;
       const results = await db.query(query);
-      return results.rows[0].id;
+      return results.rows[0];
     } catch (err) {
       console.log(err);
     }

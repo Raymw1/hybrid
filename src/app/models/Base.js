@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 const db = require("../../config/database");
-// db.connect();
+db.connect();
 
 function find(filters, table) {
   let query = `SELECT * FROM ${table}`;

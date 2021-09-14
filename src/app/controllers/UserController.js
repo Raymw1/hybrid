@@ -54,6 +54,24 @@ module.exports = {
   },
   async editForm(req, res) {
     const user = await User.find(req.params.id);
+    if (!user) {
+      const user = await User.find(req.session.userId);
+      if (user.phone.length > 13) {
+        user.phone = user.phone.replace(
+          /(\d{3})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      } else {
+        user.phone = user.phone.replace(
+          /(\d{2})(\d{2})(\d{5})(\d)/,
+          "+$1($2)$3-$4"
+        );
+      }
+      return res.render("edit", {
+        user,
+        error: "Usuário não encontrado!",
+      });
+    }
     if (user.phone.length > 13) {
       user.phone = user.phone.replace(
         /(\d{3})(\d{2})(\d{5})(\d)/,
