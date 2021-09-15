@@ -48,6 +48,11 @@
   right: 1.8rem;
 }
 
+.modal a.close img {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 .modal-content {
   display: flex;
   flex-direction: column;

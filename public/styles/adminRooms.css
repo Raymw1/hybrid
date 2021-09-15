@@ -21,8 +21,9 @@ small {
   align-self: center;
 }
 
-.rooms-grid i.delete {
-  color: var(--primary-color);
+.rooms-grid img {
+  width: 1.2rem;
+  height: 1.2rem;
   cursor: pointer;
 }
 

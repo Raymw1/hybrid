@@ -20,16 +20,16 @@ const Menu = {
   main: document.querySelector("body > main"),
   open(event) {
     event.preventDefault();
+    this.icon.firstElementChild.src = "/assets/images/close.svg";
     this.icon.setAttribute("onclick", "Menu.close(event);");
     this.main.style.marginTop = "6.4rem";
-    this.icon.firstElementChild.innerText = "close";
     this.header.classList.add("active");
   },
   close(event) {
     event.preventDefault();
+    this.icon.firstElementChild.src = "/assets/images/menu.svg";
     this.main.style.marginTop = "0";
     this.icon.setAttribute("onclick", "Menu.open(event);");
-    this.icon.firstElementChild.innerText = "menu";
     this.header.classList.remove("active");
   },
 };

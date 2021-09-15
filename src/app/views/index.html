@@ -34,7 +34,7 @@
           data-date="{{ schedule.date }}" 
           data-desk="{{ schedule.desk }}" 
           data-room="{{ schedule.room }}" 
-          data-unity="{{ schedule.unity }}" class="cancelSchedule"><i class="material-icons">close</i></div>
+          data-unity="{{ schedule.unity }}" class="cancelSchedule"><img src="/assets/images/delete.svg" alt=""></div>
         </div>
         {% endfor %}
         {% else %}
@@ -51,7 +51,7 @@
     </main>
     <div class="modal-overlay">
       <div class="modal">
-        <a class="close" href="#" onclick="Modal.close(event);"><i class="material-icons">close</i></a>
+        <a class="close" href="#" onclick="Modal.close(event);"><img src="/assets/images/close.svg" alt=""></a>
         <div class="modal-content">
           <p>Confirmar o cancelamento da <strong>mesa <span class="modalDesk"></span></strong> da <strong>sala <span class="modalRoom"></span></strong> para o dia <strong><span class="modalDate"></span></strong> na unidade de <strong><span class="modalUnity"></span></strong></p>
           <button type="submit" form="deleteSchedule" onclick="Validate.allFields(event)" class="button">Confirmar</button>

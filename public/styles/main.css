@@ -39,7 +39,6 @@ button {
   background-color: var(--secondary-color);
   color: #fff;
   font-weight: 500;
-  text-transform: uppercase;
   margin: 0 auto;
   padding: 1rem 0;
   border-radius: 0.8rem;

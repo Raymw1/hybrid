@@ -20,8 +20,9 @@ small {
   align-self: center;
 }
 
-.success-schedule-grid i {
-  color: #ff0000;
+.success-schedule-grid img {
+  width: 1.2rem;
+  height: 1.2rem;
   cursor: pointer;
 }
 
