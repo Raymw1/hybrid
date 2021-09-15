@@ -79,6 +79,7 @@ header.content {
   display: flex;
   flex-direction: column;
   padding: 2.4rem 0 4.8rem;
+  max-width: 300px;
 }
 
 .other-links {

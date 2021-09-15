@@ -1,7 +1,3 @@
-.container {
-  max-width: 300px;
-}
-
 form {
   display: flex;
   flex-direction: column;
