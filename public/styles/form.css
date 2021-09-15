@@ -31,11 +31,11 @@ select {
   transition: border 100ms;
 }
 
-.input-group {
+.input-group:not(.check) {
   position: relative;
 }
 
-.input-group:focus-within::after {
+.input-group:not(.check):focus-within::after {
   content: "";
   width: calc(100% - 3.2rem);
   height: 2px;

@@ -26,8 +26,9 @@
         </div>
         <div class="input-group">
           <label for="email">Email</label>
-          <div class="input">
+          <div class="input email">
             <input type="email" id="email" onblur="Validate.isEmail(this)" name="email" value="{{ user.email }}" />
+            <img src="/assets/images/email.svg" alt="">
           </div>
         </div>
         <div class="input-group">
@@ -66,18 +67,27 @@
         <a class="close" href="#" onclick="Modal.closePassword(event);"><i class="material-icons">close</i></a>
         <div class="modal-content">
           <form action="/users/change-password" method="post">
-            <h4>Torque sua senha aqui</h4>
+            <h4>Troque sua senha aqui</h4>
               <div class="input-group">
                 <label for="password">Senha atual</label>
-                <input type="password" name="password">
+                <div class="input password">
+                  <input type="password" name="password">
+                  <img class="passwordButton" src="/assets/images/password.svg" alt="">
+                </div>
               </div>
               <div class="input-group">
                 <label for="newPassword">Senha nova</label>
-                <input type="password" name="newPassword">
+                <div class="input password">
+                  <input type="password" name="newPassword">
+                  <img class="passwordButton" src="/assets/images/password.svg" alt="">
+                </div>
               </div>
               <div class="input-group">
                 <label for="newPasswordRepeat">Confirme sua senha nova</label>
-                <input type="password" name="newPasswordRepeat">
+                <div class="input password">
+                  <input type="password" name="newPasswordRepeat">
+                  <img class="passwordButton" src="/assets/images/password.svg" alt="">
+                </div>
               </div>
               <input type="hidden" name="id" value="{{ user.id }}">
               <button type="submit" onclick="Validate.allFields(event)" class="button">Trocar senha</button>
@@ -91,5 +101,6 @@
     <script src="/scripts/mask.js"></script>
     <script src="/scripts/validateForm.js"></script>
     <script src="/scripts/cancelSchedule.js"></script>
+    <script src="/scripts/showPassword.js"></script>
   </body>
 </html>
