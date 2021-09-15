@@ -55,7 +55,7 @@ module.exports = {
         subject: "Recuperação de senha",
         html: `<h2>Recupere sua senha</h2>
         <p>Não se preocupe, clique no link abaixo para recuperar sua senha</p>
-        <p><a href="http://127.0.0.1:3000/password-reset?token=${token}" target="_blank">RECUPERAR SENHA</a></p>`,
+        <p><a href="${req.protocol}://${req.headers.host}/password-reset?token=${token}" target="_blank">RECUPERAR SENHA</a></p>`,
       });
       return res.render("signup", {
         success: "Enviamos um link para seu email!",

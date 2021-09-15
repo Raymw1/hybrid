@@ -38,30 +38,41 @@ module.exports = {
     return res.render("rooms", { rooms, day, dateTime, cityName });
   },
   async post(req, res) {
-    let { day, desk } = req.body;
-    const id = await Schedule.create({
-      schedule: day,
-      user_id: req.session.userId,
-      desk_id: desk,
-    });
-    desk = await Desk.find(desk);
-    const room = (await Room.find(desk.room_id)).room;
-    desk = desk.position;
-    const { city } = await City.find(req.session.cityId);
-    const gcalendar = `https://calendar.google.com/calendar/u/0/r/eventedit?text=Fcamara&location=${city}&dates=${
-      parseDate(day).gcalendar1
-    }/${parseDate(day).gcalendar2}`;
-    req.session.day = undefined;
-    req.session.cityId = undefined;
-    req.session.save((error) => {
-      if (error) throw error;
-      return res.render("successSchedule", {
-        day: parseDate(day).format,
-        gcalendar,
-        room,
-        desk,
+    try {
+      let { day, desk } = req.body;
+      const id = await Schedule.create({
+        schedule: day,
+        user_id: req.session.userId,
+        desk_id: desk,
       });
-    });
+      desk = await Desk.find(desk);
+      const room = (await Room.find(desk.room_id)).room;
+      desk = desk.position;
+      const { city } = await City.find(req.session.cityId);
+      const gcalendar = `https://calendar.google.com/calendar/u/0/r/eventedit?text=Fcamara&location=${city}&dates=${
+        parseDate(day).gcalendar1
+      }/${parseDate(day).gcalendar2}`;
+      req.session.day = undefined;
+      req.session.cityId = undefined;
+      req.session.save((error) => {
+        if (error) throw error;
+        return res.render("successSchedule", {
+          day: parseDate(day).format,
+          gcalendar,
+          room,
+          desk,
+        });
+      });
+    } catch (err) {
+      console.error(err);
+      const { name } = await User.find(req.session.userId);
+      const schedules = await getSchedules(req.session.userId);
+      return res.render("index", {
+        name,
+        schedules,
+        error: "Erro inesperado, tente novamente!",
+      });
+    }
   },
   async delete(req, res) {
     try {

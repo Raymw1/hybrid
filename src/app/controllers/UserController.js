@@ -1,11 +1,19 @@
 /* eslint-disable camelcase */
 const User = require("../models/User");
+const mailer = require("../../lib/mailer");
 const { hash } = require("bcryptjs");
 
 module.exports = {
   async index(req, res) {
-    const users = await User.findAll();
-    return res.render("admin/users", { users });
+    try {
+      const users = await User.findAll();
+      return res.render("admin/users", { users });
+    } catch (err) {
+      console.error(err);
+      return res.render("/signup", {
+        error: "Erro inesperado, tente novamente!",
+      });
+    }
   },
   async create(req, res) {
     return res.render("admin/createUser");
@@ -15,7 +23,7 @@ module.exports = {
       let { name, email, password, phone, city, is_admin } = req.body;
       password = await hash(password, 8);
       is_admin = !!is_admin;
-      phone = phone.replace(/\D/g, ""); // Get only digits/numbers
+      phone = phone.replace(/\D/g, "");
       const userId = await User.create({
         name,
         email,
@@ -24,19 +32,18 @@ module.exports = {
         city_id: city,
         is_admin,
       });
-
       if (!req.session || (req.session && !req.session.is_admin)) {
         req.session.userId = userId;
         req.session.username = name;
         req.session.useremail = email;
       }
-      // await mailer.sendMail({
-      //   to: req.body.email,
-      //   from: process.env, //tem mais alguma rota aqui?
-      //   subjet: "Cadastro feito com sucesso",
-      //   html: `<h2>Acesse sua conta agora</h2>
-      //           <p><a href="Aqui vai um link http"> Acessar minha conta</a></p>`,
-      // });
+      await mailer.sendMail({
+        to: req.body.email,
+        from: process.env.APP_MAIL,
+        subjet: "Cadastro feito com sucesso",
+        html: `<h2>Acesse sua conta agora</h2>
+                <p><a href="${req.protocol}://${req.headers.host}/login"> Acessar minha conta</a></p>`,
+      });
 
       req.session.save((error) => {
         if (error) throw error;

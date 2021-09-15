@@ -22,6 +22,10 @@ nunjucks.configure(path.join(__dirname, "app/views"), {
 });
 server.use(routes);
 
+server.use(function (req, res) {
+  res.status(404).redirect("/");
+});
+
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, function () {
   console.log(`Server running in http://127.0.0.1:${PORT}`);
