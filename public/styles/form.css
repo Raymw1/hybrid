@@ -82,6 +82,7 @@ input:-webkit-autofill:active {
   padding: 2.4rem 3.2rem;
   border-radius: .8rem;
   position: relative;
+  cursor: pointer;
 }
 
 .input-box.active {

@@ -32,7 +32,7 @@
           <p><a href="#" onclick="Modal.open(event)">Excluir minha conta</a></p>
         </div>
         {% endif %}
-        {% if session.is_admin %}
+        {% if session.is_admin and session.userId != user.id %}
         <div class="input-group check">
           <input type="checkbox" name="is_admin" {{ 'checked' if user.is_admin }}>Administrador
         </div>

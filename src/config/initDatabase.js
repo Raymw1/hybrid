@@ -112,7 +112,7 @@ async function initDb() {
     '${await hash("admin00", 8)}', 1, true)`);
   console.log("🚀 -------- ADMIN -------- 🚀");
   console.log("🚀 email: admin@admin.com  🚀");
-  console.log("🚀     senha: admin00      🚀");
+  console.log("🚀    password: admin00    🚀");
   console.log("🚀 --------- // ---------  🚀");
   console.log("\nDatabase and tables created 🚀");
   process.exit();

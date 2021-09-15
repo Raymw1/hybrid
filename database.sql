@@ -72,3 +72,7 @@ ON DELETE CASCADE;
 ALTER TABLE "schedules" DROP CONSTRAINT schedules_desk_id_fkey, 
 ADD CONSTRAINT schedules_desk_id_fkey FOREIGN KEY ("desk_id") REFERENCES "desks" ("id")
 ON DELETE CASCADE;
+
+------------- CITIES -------------
+INSERT INTO "cities" ("city") VALUES ('São Paulo');
+INSERT INTO "cities" ("city") VALUES ('Santos');
