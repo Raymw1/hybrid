@@ -11,7 +11,7 @@
 [![Contributors](https://img.shields.io/github/contributors/Raymw1/fcamara?color=41s4f&style=flat-square)](https://github.com/Raymw1/fcamara/graphs/contributors)
 
 
-> A WebApplication built to help companies to manage the hybrid system.
+> A Web Application built to help companies to manage the hybrid system following the COVID-19 safety protocols.
 
 <br />
 
@@ -29,7 +29,7 @@
 
 # :rocket: Features
 
-* ⌚ Schedule times to go to work.
+* ⌚ Schedule a desk at the office.
 * 💺 Manage and create rooms to users(admin).
 * 🧑‍🤝‍🧑 Manage users of the application(admin).
 
@@ -92,11 +92,11 @@ Run the following command in order to start the application in a development env
 
 **Question:** Are all kind of users able to create rooms?
 
-**Answer:** The application has two kind of users: Visitors and Administrators. As a administrator, you're able to create, delete and view all the data related to rooms and also other users.
+**Answer:** The application has two kind of users: Visitors and Administrators. As an administrator, you're able to create, delete and view all the data related to rooms and also other users.
 
 # :bug: Issues
 
-Feel free to **file a new issue** with a respective title and description on the the [Fcamara](https://github.com/Raymw1/fcamara/issues) repository. If you already found a solution to your problem, **i would like to review your pull request**!
+Feel free to **file a new issue** with a respective title and description on the the [Fcamara](https://github.com/Raymw1/fcamara/issues) repository. If you already found a solution for your problem, **I would like to review your pull request**!
 
 # :closed_book: License
 
