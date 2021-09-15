@@ -1,21 +1,12 @@
+{% extends 'template.html' %}
 {% set content = "success" %}
-<!DOCTYPE html>
-<html lang="PT-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/header.css">
+
+{% block head %}
     <link rel="stylesheet" href="/styles/successSchedule.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Agendamento sucedido!</title>
-  </head>
-  <body>
-    {% include 'partials/menu.html' %}
+{% endblock head %}
+
+{% block content %}
     <main class="content container">
       <h3>Agendado com sucesso!</h3>
       <p>Veja mais sobre ele aqui!</p>
@@ -34,7 +25,4 @@
       <a href="{{ gcalendar }}" target="_blank" class="button gcalendar">Salvar<i class="material-icons">calendar_today</i></a>
       <a href="/" class="button">Voltar<i class="material-icons">arrow_circle_left</i></a>
     </main>
-    {% include "partials/messagePopup.html" %}
-    <script src="/scripts/header.js"></script>
-  </body>
-</html>
+{% endblock content %}

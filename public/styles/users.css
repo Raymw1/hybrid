@@ -1,14 +1,14 @@
 main p {
-  color: #303033;
+  color: var(--fourth-color);
   font-weight: 700;
 }
 
 main > small {
-  margin: .8rem 0 3.2rem;
+  margin: 0.8rem 0 3.2rem;
   font-size: 12px;
   line-height: 12px;
   letter-spacing: -0.02em;
-  color: #8B8B8B;
+  color: var(--gray-color);
 }
 
 .users {
@@ -21,7 +21,7 @@ main > small {
 .user {
   display: flex;
   flex-direction: column;
-  gap: .4rem;
+  gap: 0.4rem;
 }
 
 .user small {
@@ -30,9 +30,9 @@ main > small {
 
 .user-actions {
   display: flex;
-  gap: .8rem;
+  gap: 0.8rem;
   align-items: center;
-  margin-top: .8rem;
+  margin-top: 0.8rem;
   font-size: 1.4rem;
 }
 
@@ -50,10 +50,7 @@ main > small {
   color: #ff4646;
 }
 
-
 /* =========== CREATE USERS =========== */
 main > h2 {
   margin-bottom: 1.6rem;
 }
-
-

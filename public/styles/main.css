@@ -1,8 +1,10 @@
 :root {
   font-size: 62.5%;
-  --primary-color: #FC6027;
-  --secondary-color: #4B4FA1;
-  --third-color: #E3DFDE;
+  --primary-color: #fc6027;
+  --secondary-color: #4b4fa1;
+  --third-color: #e3dfde;
+  --fourth-color: #303033;
+  --gray-color: #8B8B8B;
 }
 
 * {
@@ -10,7 +12,7 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  color: #303033;
+  color: var(--fourth-color);
 }
 
 /* ============ GENERAL ============ */
@@ -24,7 +26,7 @@ body {
   font-size: 16px;
   background-color: #fff;
   letter-spacing: -0.02em;
-  font-family: 'Metropolis', sans-serif;
+  font-family: "Metropolis", sans-serif;
 }
 
 /* ============ LINKS AND BUTTONS ============ */
@@ -40,7 +42,7 @@ button {
   text-transform: uppercase;
   margin: 0 auto;
   padding: 1rem 0;
-  border-radius: .8rem;
+  border-radius: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,7 +52,7 @@ button {
 }
 
 .button img {
-  margin-left: .8rem;
+  margin-left: 0.8rem;
 }
 
 /* .button:hover {
@@ -61,7 +63,6 @@ button {
 a {
   font-weight: 500;
 }
-
 
 /* ============ STRUCTURE ============ */
 .content {
@@ -87,7 +88,6 @@ header.content {
   font-size: 1.4rem;
 }
 
-
 /* ================ MESSAGE POPUP ================ */
 .message-popup {
   position: fixed;
@@ -98,7 +98,7 @@ header.content {
   align-items: center;
   justify-content: center;
   padding: 1.2rem;
-  border-radius: .8rem;
+  border-radius: 0.8rem;
   font-weight: 500;
   max-width: min(90%, 25rem);
   word-wrap: break-word;

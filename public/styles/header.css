@@ -42,22 +42,25 @@ header ul li a.active {
   font-weight: bold;
 }
 
-header ul li a, header button {
+header ul li a,
+header button {
   position: relative;
 }
 
-header ul li a::after, header button::after {
-  content: '';
+header ul li a::after,
+header button::after {
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
-  height: .2rem;
+  height: 0.2rem;
   background-color: var(--primary-color);
   transition: all 400ms ease-in-out;
 }
 
-header ul li a:hover::after, header button:hover::after {
+header ul li a:hover::after,
+header button:hover::after {
   width: 100%;
 }
 
@@ -71,7 +74,6 @@ header button {
   background-color: transparent;
 }
 
-
 .hamburguer {
   display: none;
 }
@@ -81,10 +83,11 @@ header button {
     display: initial;
   }
 
-  header  ul li, header form {
+  header ul li,
+  header form {
     display: none;
   }
-  
+
   .header-overlay.active {
     position: fixed;
     top: 0;
@@ -118,18 +121,18 @@ header button {
     display: grid;
     grid-template-rows: 6.4rem auto;
     gap: 1.6rem;
-    color: #303033;
+    color: var(--fourth-color);
     margin-bottom: 6.4rem;
   }
-  
+
   .header-overlay.active header .user-info h3 {
     font-size: 20px;
   }
 
   .header-overlay.active header .user-info p {
-    color: #8B8B8B;
+    color: var(--gray-color);
     font-size: 12px;
-    margin-top: .8rem;
+    margin-top: 0.8rem;
   }
 
   .header-overlay.active nav .links {
@@ -145,7 +148,8 @@ header button {
     height: 100%;
   }
 
-  .header-overlay.active nav ul, .header-overlay.active form {
+  .header-overlay.active nav ul,
+  .header-overlay.active form {
     width: initial;
     margin-left: auto;
     flex-direction: column;
@@ -158,7 +162,8 @@ header button {
     right: 2.4rem;
   }
 
-  .header-overlay.active ul li, .header-overlay.active form {
+  .header-overlay.active ul li,
+  .header-overlay.active form {
     display: initial;
   }
 }

@@ -1,23 +1,7 @@
+{% extends 'template.html' %}
 {% set content = "login" %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css" />
-    <link rel="stylesheet" href="/styles/form.css" />
-    <link rel="stylesheet" href="/styles/header.css" />
-    <link rel="stylesheet" href="/styles/modal.css" />
-    <link rel="stylesheet" href="/styles/signup.css" />
-    <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Login</title>
-  </head>
-  <body>
-    {% include 'partials/menu.html' %}
+
+{% block content %}
     <main class="content container">
       <form action="/login" method="POST">
         <div class="input-group">
@@ -44,10 +28,10 @@
       </form>
     </main>
     {% include 'partials/modalPassword.html' %}
-    {% include "partials/messagePopup.html" %}
-    <script src="/scripts/header.js"></script>
+{% endblock content %}
+
+{% block scripts %}
     <script src="/scripts/modal.js"></script>
     <script src="/scripts/validateForm.js"></script>
     <script src="/scripts/showPassword.js"></script>
-  </body>
-</html>
+{% endblock scripts %}

@@ -1,5 +1,5 @@
 small {
-  color: #8b8b8b;
+  color: var(--gray-color);
   font-size: 1.3rem;
   margin-bottom: 3.2rem;
 }

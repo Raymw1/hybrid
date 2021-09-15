@@ -1,23 +1,14 @@
+{% extends 'template.html' %}
 {% set content = "index" %}
-<!DOCTYPE html>
-<html lang="PT-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css">
+
+{% block head %}
     <link rel="stylesheet" href="/styles/index.css">
     <link rel="stylesheet" href="/styles/form.css">
-    <link rel="stylesheet" href="/styles/header.css">
     <link rel="stylesheet" href="/styles/modal.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="//db.onlinewebfonts.com/c/c02d97eb2b2899bdb0d87b182a64333d?family=Metropolis" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Agendamentos</title>
-  </head>
-  <body>
-    {% include 'partials/menu.html' %}
+{% endblock head %}
+
+{% block content %}
     <main class="content container">
       <p>Olá {{ name }}!</p>
       <small>Veja mais sobre ele aqui!</small>
@@ -70,11 +61,11 @@
     <form action="/schedule/delete" id="deleteSchedule" method="post">
       <input type="hidden" name="id">
     </form>
-    {% include "partials/messagePopup.html" %}
-    <script src="/scripts/header.js"></script>
+{% endblock content %}
+
+{% block scripts %}
     <script src="/scripts/modal.js"></script>
     <script src="/scripts/mask.js"></script>
     <script src="/scripts/validateForm.js"></script>
     <script src="/scripts/cancelSchedule.js"></script>
-  </body>
-</html>
+{% endblock scripts %}

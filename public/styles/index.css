@@ -1,14 +1,14 @@
 main p {
-  color: #303033;
+  color: var(--fourth-color);
   font-weight: 700;
 }
 
 small {
-  margin: .8rem 0 3.2rem;
+  margin: 0.8rem 0 3.2rem;
   font-size: 12px;
   line-height: 12px;
   letter-spacing: -0.02em;
-  color: #8B8B8B;
+  color: var(--gray-color);
 }
 
 .success-schedule-grid {
@@ -31,5 +31,3 @@ small {
   flex-direction: column;
   gap: 1.5rem;
 }
-
-
