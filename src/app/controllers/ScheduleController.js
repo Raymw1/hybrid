@@ -11,7 +11,13 @@ const Room = require("../models/Room");
 module.exports = {
   async index(req, res) {
     // const cities = await City.findAll();
-    const days = getNextDays(6);
+    let userSchedules = await Schedule.findAll({
+      where: { user_id: req.session.userId },
+    });
+    userSchedules = userSchedules.map((schedule) =>
+      String(new Date(schedule.schedule)).slice(0, 24)
+    );
+    const days = getNextDays(6, userSchedules);
     const cityId = (await User.find(req.session.userId)).city_id;
     return res.render("schedule", { cityId, days });
   },
@@ -26,12 +32,19 @@ module.exports = {
   },
   async desks(req, res) {
     const { day, cityId } = req.session;
-    if (!day || !cityId)
+    if (!day || !cityId) {
+      let userSchedules = await Schedule.findAll({
+        where: { user_id: req.session.userId },
+      });
+      userSchedules = userSchedules.map((schedule) =>
+        String(new Date(schedule.schedule)).slice(0, 24)
+      );
       return res.render("schedule", {
-        days: getNextDays(6),
+        days: getNextDays(6, userSchedules),
         cityId: (await User.find(req.session.userId)).city_id,
         error: "Antes, preencha esta parte!",
       });
+    }
     const rooms = await roomServices.getRooms(cityId, day);
     const dateTime = parseDate(day).dayAndMonth;
     const { city: cityName } = await City.find(cityId);

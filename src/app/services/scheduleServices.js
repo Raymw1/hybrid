@@ -6,7 +6,7 @@ const Schedule = require("../models/Schedule");
 const City = require("../models/City");
 const { parseDate } = require("../../lib/utils");
 
-async function getRoomAndUNity(desk_id) {
+async function getRoomAndUnity(desk_id) {
   const desk = await Desk.find(desk_id);
   const room = await Room.find(desk.room_id);
   const unity = await City.find(room.city_id);
@@ -21,7 +21,7 @@ async function getSchedules(user_id) {
       day: parseDate(schedule.schedule).birthday,
       date: parseDate(schedule.schedule).dayAndMonth,
       desk: (await Desk.find(schedule.desk_id)).position,
-      ...(await getRoomAndUNity(schedule.desk_id)),
+      ...(await getRoomAndUnity(schedule.desk_id)),
     }));
     return Promise.all(schedulesPromise);
   } catch (err) {

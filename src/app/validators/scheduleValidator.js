@@ -11,7 +11,13 @@ const { getSchedules } = require("../services/scheduleServices");
 module.exports = {
   async schedule(req, res, next) {
     const { day, cityId } = req.body;
-    const days = getNextDays(6);
+    let userSchedules = await Schedule.findAll({
+      where: { user_id: req.session.userId },
+    });
+    userSchedules = userSchedules.map((schedule) =>
+      String(new Date(schedule.schedule)).slice(0, 24)
+    );
+    const days = getNextDays(6, userSchedules);
     if (!day)
       return res.render("schedule", { days, error: "Insira um dia!", cityId });
     let dayLimit = false;
@@ -32,7 +38,13 @@ module.exports = {
   async post(req, res, next) {
     const { day, desk: deskId } = req.body;
     const { cityId } = req.session;
-    const days = getNextDays(6);
+    let userSchedules = await Schedule.findAll({
+      where: { user_id: req.session.userId },
+    });
+    userSchedules = userSchedules.map((schedule) =>
+      String(new Date(schedule.schedule)).slice(0, 24)
+    );
+    const days = getNextDays(6, userSchedules);
     let dayLimit = false;
     const dateTime = parseDate(day).dayAndMonth;
     const { city: cityName } = await City.find(cityId);

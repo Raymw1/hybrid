@@ -49,7 +49,7 @@ function parseDate(timestamp) {
 }
 
 module.exports = {
-  getNextDays(quantity) {
+  getNextDays(quantity, schedules = []) {
     const today = new Date();
     const days = [];
     while (days.length < quantity) {
@@ -58,12 +58,23 @@ module.exports = {
       today.setMinutes(0);
       today.setSeconds(0);
       if (today.getDay() != 0 && today.getDay() != 6) {
-        days.push({
-          datetime: String(today).slice(0, 24),
-          month: parseDate(today).formattedMonth,
-          day: parseDate(today).day,
-          formattedDay: parseDate(today).formattedDay,
-        });
+        const datetime = String(today).slice(0, 24);
+        function pushDays() {
+          days.push({
+            datetime,
+            month: parseDate(today).formattedMonth,
+            day: parseDate(today).day,
+            formattedDay: parseDate(today).formattedDay,
+          });
+        }
+        if (schedules && schedules.length > 0) {
+          // schedules?.length > 0
+          if (!schedules.includes(datetime)) {
+            pushDays();
+          }
+        } else {
+          pushDays();
+        }
       }
     }
     return days;
