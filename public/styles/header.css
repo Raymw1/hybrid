@@ -108,7 +108,7 @@ header button {
     z-index: 1;
   }
 
-  .header-overlay.active > a {
+  .header-overlay.active > .logo-and-back {
     display: none;
   }
 
