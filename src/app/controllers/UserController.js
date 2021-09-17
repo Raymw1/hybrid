@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable camelcase */
 const User = require("../models/User");
 const mailer = require("../../lib/mailer");
@@ -179,7 +180,7 @@ module.exports = {
     try {
       const { id } = req.body;
       await User.delete(id);
-      if (!req.session.is_admin) {
+      if (!req.session.is_admin || id == req.session.userId) {
         req.session.destroy();
         res.clearCookie("sid");
         return res.redirect("/");
