@@ -9,6 +9,16 @@
   height: 1.6rem;
 }
 
+.header-overlay .logo-and-back {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.header-overlay .logo-and-back > img {
+  width: 9rem;
+}
+
 header {
   display: flex;
   justify-content: flex-end;

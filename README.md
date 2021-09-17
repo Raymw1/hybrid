@@ -1,14 +1,14 @@
-# Fcamara
+# Hy·brid
 
 
 
 
 
 [![Author](https://img.shields.io/badge/author-Raymw1-341s4f?style=flat-square)](https://github.com/Raymw1)
-[![Languages](https://img.shields.io/github/languages/count/Raymw1/fcamara?color=41s4f&style=flat-square)](#)
-[![Stars](https://img.shields.io/github/stars/Raymw1/fcamara?color=41s4f&style=flat-square)](https://github.com/Raymw1/fcamara/stargazers)
-[![Forks](https://img.shields.io/github/forks/Raymw1/fcamara?color=41s4f&style=flat-square)](https://github.com/Raymw1/fcamara/network/members)
-[![Contributors](https://img.shields.io/github/contributors/Raymw1/fcamara?color=41s4f&style=flat-square)](https://github.com/Raymw1/fcamara/graphs/contributors)
+[![Languages](https://img.shields.io/github/languages/count/Raymw1/hybrid?color=41s4f&style=flat-square)](#)
+[![Stars](https://img.shields.io/github/stars/Raymw1/hybrid?color=41s4f&style=flat-square)](https://github.com/Raymw1/hybrid/stargazers)
+[![Forks](https://img.shields.io/github/forks/Raymw1/hybrid?color=41s4f&style=flat-square)](https://github.com/Raymw1/hybrid/network/members)
+[![Contributors](https://img.shields.io/github/contributors/Raymw1/hybrid?color=41s4f&style=flat-square)](https://github.com/Raymw1/hybrid/graphs/contributors)
 
 
 > A Web Application built to help companies to manage the hybrid system following the COVID-19 safety protocols.
@@ -37,11 +37,11 @@
 
 **You will need to install [Node.js](https://nodejs.org/en/download/) first and [Yarn](https://yarnpkg.com/) if you prefer, then in order to clone the project via HTTPS, run this command:**
 
-```git clone https://github.com/Raymw1/fcamara.git```
+```git clone https://github.com/Raymw1/hybrid.git```
 
 SSH URLs provide access to a Git repository via SSH, a secure protocol. If you have a SSH key registered in your Github account, clone the project using this command:
 
-```git clone git@github.com:Raymw1/fcamara.git```
+```git clone git@github.com:Raymw1/hybrid.git```
 
 **Install dependencies**
 
@@ -96,11 +96,11 @@ Run the following command in order to start the application in a development env
 
 # :bug: Issues
 
-Feel free to **file a new issue** with a respective title and description on the the [Fcamara](https://github.com/Raymw1/fcamara/issues) repository. If you already found a solution for your problem, **I would like to review your pull request**!
+Feel free to **file a new issue** with a respective title and description on the the [Hy·brid](https://github.com/Raymw1/hybrid/issues) repository. If you already found a solution for your problem, **I would like to review your pull request**!
 
 # :closed_book: License
 
 Released in 2020.
-This project is under the [MIT license](https://github.com/Raymw1/fcamara/blob/master/LICENSE).
+This project is under the [MIT license](https://github.com/Raymw1/hybrid/blob/master/LICENSE).
 
 Made with love by [Raymw1](https://github.com/Raymw1), [Lilian Nicolau](https://github.com/LilianNicolau) e [Esther Pimentel](https://github.com/EstherPimentel) 💜🚀

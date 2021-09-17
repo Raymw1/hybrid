@@ -1,7 +1,10 @@
 <div class="header-overlay content">
+  <div class="logo-and-back">
   {% if content != 'index' and content != 'login' and content != 'reset-password' and content != 'success' %}
   <a href="#" onclick="history.back()"><img src="/assets/images/back.svg" alt="Voltar"></a>
   {% endif %}
+  <img src="/assets/images/hybrid.svg" alt="Hybrid">
+  </div>
   <header>
     {% if session.userId %}
     <div class="user-info">

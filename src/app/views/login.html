@@ -2,7 +2,8 @@
 {% set content = "login" %}
 
 {% block content %}
-    <main class="content container">
+    <main class="content container {{ content }}">
+      <img src="/assets/images/hybrid.svg" class="logo" alt="Hybrid">
       <form action="/login" method="POST">
         <div class="input-group">
           <label for="email">Email:</label>
